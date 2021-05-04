@@ -1,0 +1,60 @@
+body {
+    header {
+        display: flex;
+        justify-content: center;
+    }
+    main {
+        #search {
+            &__bar {
+                &__input {
+                    height: 70px;
+                    width: 1240px;
+                    margin: 0 auto;
+                    background-color: #E7E7E7;
+                    border-radius: 5px;
+                    border: none;
+                }
+            }
+            &__sort {
+                display: flex;
+                justify-content: flex-start;
+                &__ingredients {
+                    background-color: #3282F7;
+                    width: 170px;
+                    height: 70px;
+                    margin: 10px;
+                    &__input {
+                        background-color: #3282F7;
+                        border: none;
+                        width: 150px;
+                        height: 70px;
+                    }
+                }
+                &__appliance {
+                    background-color: #68D9A4;
+                    width: 170px;
+                    height: 70px;
+                    margin: 10px;
+                    &__input {
+                        background-color: #68D9A4;
+                        border: none;
+                        width: 150px;
+                        height: 70px;
+                    }
+                }
+                &__ustensils {
+                    background-color:#ED6454;
+                    width: 170px;
+                    height: 70px;
+                    margin: 10px;
+                    &__input {
+                        background-color:#ED6454;
+                        border: none;
+                        width: 150px;
+                        height: 70px;
+                    }
+                }
+            }
+        }
+    }
+}
