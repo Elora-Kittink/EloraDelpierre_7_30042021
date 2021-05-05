@@ -15,13 +15,16 @@ function displayRecipes() {
     const recipesDesc = recipe.description;
     const recipesAppliance = recipe.appliance;
     const recipesUstensils = recipe.ustensils;
+    const recipeCol = document.createElement("div");
+    recipeCol.setAttribute("class", "col");
+    resultGallery.appendChild(recipeCol);
     const recipeCard = document.createElement("div");
-    recipeCard.setAttribute("class", "recipe");
-    resultGallery.appendChild(recipeCard);
-    const recipeInfo = document.createElement("div");
-    recipeInfo.setAttribute("class", "recipe__info");
-    recipeCard.appendChild(recipeInfo);
+    recipeCard.setAttribute("class", "recipe card");
+    recipeCol.appendChild(recipeCard);
     addImgInRecipe(recipeCard);
+    const recipeInfo = document.createElement("div");
+    recipeInfo.setAttribute("class", "recipe__info card-body");
+    recipeCard.appendChild(recipeInfo);
     addTitleInRecipe(recipeInfo, recipesName, recipesTime);
     addIngredientsInrecipe(recipesIngredients, recipeInfo);
     addDescInRecipe(recipeInfo, recipesDesc);
@@ -32,13 +35,13 @@ function displayRecipes() {
 
 function addImgInRecipe(recipeCard) {
   const recipeImg = document.createElement("div");
-  recipeImg.setAttribute("class", "recipe__img");
+  recipeImg.setAttribute("class", "recipe__img card-img-top");
   recipeCard.appendChild(recipeImg);
 }
 
 function addTitleInRecipe(recipeInfo, recipesName, recipesTime) {
   const recipeTitle = document.createElement("div");
-  recipeTitle.setAttribute("class", "recipe__info__title");
+  recipeTitle.setAttribute("class", "recipe__info__title card-title");
   recipeInfo.appendChild(recipeTitle);
   const recipeName = document.createElement("p");
   recipeName.setAttribute("class", "recipe__info__title__name");

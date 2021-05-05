@@ -21,7 +21,7 @@ export const recipes = [
       },
       {
         ingredient: "Sucre",
-        quantite: 30,
+        quantity: 30,
         unit: "grammes",
       },
       {
@@ -29,8 +29,7 @@ export const recipes = [
       },
     ],
     time: 10,
-    description:
-      "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
+    description: "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
     appliance: "Blender",
     ustensils: ["cuillère à Soupe", "verres", "presse citron"],
   },
@@ -54,7 +53,7 @@ export const recipes = [
       },
       {
         ingredient: "Carotte",
-        quantite: 1,
+        quantity: 1,
       },
       {
         ingredient: "Citron Vert",
@@ -332,8 +331,7 @@ export const recipes = [
       },
     ],
     time: 15,
-    description:
-      "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.",
+    description: "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.",
     appliance: "Saladier",
     ustensils: ["cuillère en bois", "couteau"],
   },
@@ -439,8 +437,7 @@ export const recipes = [
       },
     ],
     time: 40,
-    description:
-      "Éplucher les fruits et les couper en morceaux, les mettre dans une casserolle en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.",
+    description: "Éplucher les fruits et les couper en morceaux, les mettre dans une casserolle en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.",
     appliance: "Casserole",
     ustensils: ["couteau", "économe"],
   },
@@ -684,8 +681,7 @@ export const recipes = [
       },
     ],
     time: 0,
-    description:
-      "Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.",
+    description: "Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.",
     appliance: "Blender",
     ustensils: ["couteau", "verres", "presse citron"],
   },
@@ -879,8 +875,7 @@ export const recipes = [
       },
     ],
     time: 40,
-    description:
-      "Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de poisson, ajouter les pates. Ajouter la mayonnaise. Mélanger le tout et servir frais.",
+    description: "Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de poisson, ajouter les pates. Ajouter la mayonnaise. Mélanger le tout et servir frais.",
     appliance: "Saladier",
     ustensils: ["couteau", "cuillère en bois"],
   },
@@ -947,8 +942,7 @@ export const recipes = [
       },
     ],
     time: 25,
-    description:
-      "Verser de l'huile dans une cocotte minute couper les légumes et les verser dans l'huile chaude. Laisser cuire et remuer pendant 10 minutes. Passer aux mixer. Servir.",
+    description: "Verser de l'huile dans une cocotte minute couper les légumes et les verser dans l'huile chaude. Laisser cuire et remuer pendant 10 minutes. Passer aux mixer. Servir.",
     appliance: "Mixer",
     ustensils: ["cocotte minute", "couteau"],
   },
@@ -982,8 +976,7 @@ export const recipes = [
       },
     ],
     time: 15,
-    description:
-      "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
+    description: "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
     appliance: "Casserolle",
     ustensils: ["couteau", "cuillère en bois"],
   },
@@ -1050,8 +1043,7 @@ export const recipes = [
       },
     ],
     time: 30,
-    description:
-      "Prendre les pois chiches, les mettre dans le mixer avec de l'huile d'olive, ajouter le jus des 2 citrons et du paprika selon le gout.",
+    description: "Prendre les pois chiches, les mettre dans le mixer avec de l'huile d'olive, ajouter le jus des 2 citrons et du paprika selon le gout.",
     appliance: "Mixer",
     ustensils: ["cuillère en bois", "presse citron"],
   },
@@ -1076,8 +1068,7 @@ export const recipes = [
       },
     ],
     time: 60,
-    description:
-      "Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuirre à petit feur pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
+    description: "Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuirre à petit feur pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
     appliance: "Mixer",
     ustensils: ["casserolle", "cuillère en bois"],
   },
@@ -1189,8 +1180,7 @@ export const recipes = [
       },
     ],
     time: 5,
-    description:
-      "Mélanger le fromage blanc avec le citron. Ajouter un peu de sel et poivre à votre gout. Faire dorer le pain de mie. Puis étaler le mélange. Ajouter une feuille de salade puis le saumon fumé. C'est prêt.",
+    description: "Mélanger le fromage blanc avec le citron. Ajouter un peu de sel et poivre à votre gout. Faire dorer le pain de mie. Puis étaler le mélange. Ajouter une feuille de salade puis le saumon fumé. C'est prêt.",
     appliance: "Four",
     ustensils: ["couteau", "cuillère en bois"],
   },
@@ -1258,8 +1248,7 @@ export const recipes = [
       },
     ],
     time: 25,
-    description:
-      "Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15 minutes. Mixer en ajoutant le beurre, la crème. Ajouter le cumun et la noix de muscade.",
+    description: "Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15 minutes. Mixer en ajoutant le beurre, la crème. Ajouter le cumun et la noix de muscade.",
     appliance: "Mixer",
     ustensils: ["cocotte minute", "couteau", "cuillère en bois"],
   },
@@ -1399,8 +1388,7 @@ export const recipes = [
       },
     ],
     time: 40,
-    description:
-      "Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes au four",
+    description: "Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes au four",
     appliance: "Four",
     ustensils: ["saladier", "couteau", "fouet"],
   },
@@ -1430,8 +1418,7 @@ export const recipes = [
       },
     ],
     time: 10,
-    description:
-      "Dans un saladier mettre l'eau, le jus des cirtons et le sucre. Bien mélanger. Ajouter le bicarbonate. Servir. Ajouter des glaçon et une feuille de menthe pour la déco.",
+    description: "Dans un saladier mettre l'eau, le jus des cirtons et le sucre. Bien mélanger. Ajouter le bicarbonate. Servir. Ajouter des glaçon et une feuille de menthe pour la déco.",
     appliance: "Saladier",
     ustensils: ["cuillère en bois"],
   },
@@ -1520,8 +1507,7 @@ export const recipes = [
       },
     ],
     time: 50,
-    description:
-      "Préchauffez le fours à 200°. Etaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit ",
+    description: "Préchauffez le fours à 200°. Etaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit ",
     appliance: "Four",
     ustensils: ["rouleau à patisserie", "moule à tarte", "presse citron"],
   },
@@ -1588,8 +1574,7 @@ export const recipes = [
       },
     ],
     time: 30,
-    description:
-      "Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
+    description: "Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
     appliance: "Casserolle",
     ustensils: ["fouet", "saladier"],
   },
@@ -1661,8 +1646,7 @@ export const recipes = [
       },
     ],
     time: 5,
-    description:
-      "Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
+    description: "Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
     appliance: "Saladier",
     ustensils: ["fouet", "verres", "cuillère en bois"],
   },
@@ -1697,8 +1681,7 @@ export const recipes = [
       },
     ],
     time: 40,
-    description:
-      "Étaler la pate a pizza. Ecraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes",
+    description: "Étaler la pate a pizza. Ecraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes",
     appliance: "Four",
     ustensils: ["rouleau à patisserie", "râpe à fromage", "couteau"],
   },
