@@ -57,9 +57,16 @@ body {
       }
     }
     #result {
-      .reccipe {
-        &__img {
-          background-color: grey;
+      .col {
+        .recipe {
+          &__img {
+            background-color: #c7bebe;
+            width: 100%;
+            height: 178px;
+          }
+          &__info {
+            background-color: #e7e7e7;
+          }
         }
       }
     }

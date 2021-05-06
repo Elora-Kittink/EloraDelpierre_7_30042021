@@ -19,11 +19,11 @@ function displayRecipes() {
     recipeCol.setAttribute("class", "col");
     resultGallery.appendChild(recipeCol);
     const recipeCard = document.createElement("div");
-    recipeCard.setAttribute("class", "recipe card");
+    recipeCard.setAttribute("class", "recipe ");
     recipeCol.appendChild(recipeCard);
     addImgInRecipe(recipeCard);
     const recipeInfo = document.createElement("div");
-    recipeInfo.setAttribute("class", "recipe__info card-body");
+    recipeInfo.setAttribute("class", "recipe__info ");
     recipeCard.appendChild(recipeInfo);
     addTitleInRecipe(recipeInfo, recipesName, recipesTime);
     addIngredientsInrecipe(recipesIngredients, recipeInfo);
@@ -35,13 +35,13 @@ function displayRecipes() {
 
 function addImgInRecipe(recipeCard) {
   const recipeImg = document.createElement("div");
-  recipeImg.setAttribute("class", "recipe__img card-img-top");
+  recipeImg.setAttribute("class", "recipe__img ");
   recipeCard.appendChild(recipeImg);
 }
 
 function addTitleInRecipe(recipeInfo, recipesName, recipesTime) {
   const recipeTitle = document.createElement("div");
-  recipeTitle.setAttribute("class", "recipe__info__title card-title");
+  recipeTitle.setAttribute("class", "recipe__info__title ");
   recipeInfo.appendChild(recipeTitle);
   const recipeName = document.createElement("p");
   recipeName.setAttribute("class", "recipe__info__title__name");
@@ -63,8 +63,14 @@ function addIngredientsInrecipe(recipesIngredients, recipeInfo) {
     const ingredientUnit = ingredient.unit;
     let ingredients = document.createElement("p");
     ingredients.setAttribute("class", "recipe__info__ingredients__ingredient");
-    ingredients.innerHTML = ingredientName + ": " + ingredientQty + ingredientUnit;
+    ingredients.innerHTML = ingredientName;
     ingredientsList.appendChild(ingredients);
+    if (ingredient.quantity !== undefined) {
+      ingredients.innerHTML = ingredientName + ": " + ingredientQty;
+    }
+    if (ingredient.unit !== undefined) {
+      ingredients.innerHTML = ingredientName + ": " + ingredientQty + ingredientUnit;
+    }
   }
 }
 
