@@ -1,16 +1,41 @@
 import { recipes } from "./recipes.js";
 
-console.log("test");
-console.log(recipes);
-
-function displayRecipes() {
+function searchBar() {
+  let recipesToDisplay = [];
   const resultGallery = document.getElementById("result");
+  const searchBarInput = document.getElementById("search__bar__input");
+  let searchValue = searchBarInput.value;
+  console.log(searchValue);
   for (let recipe of recipes) {
-    const recipesId = recipe.id;
+    let nameArray = recipe.name.split(" ");
+    let descArray = recipe.description.split(" ");
+    if (nameArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
+      // choisir l'ordre qui a le plus de chance d'abouttir a un true rapidement//
+      console.log("ça marche");
+      recipesToDisplay.push(recipe);
+    } else if (descArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
+      console.log("ça marche");
+      recipesToDisplay.push(recipe);
+    } else {
+      console.log("marche pas");
+    }
+
+    // console.log(nameArray);
+    // console.log(descArray);
+  }
+  console.log(recipesToDisplay);
+  resultGallery.innerHTML = "";
+  displayRecipes(recipesToDisplay);
+}
+
+function displayRecipes(recipesArray) {
+  const resultGallery = document.getElementById("result");
+  const searchBarInput = document.getElementById("search__bar__input");
+  searchBarInput.addEventListener("input", searchBar);
+
+  for (let recipe of recipesArray) {
     const recipesName = recipe.name;
-    const recipesServing = recipe.servings;
     const recipesIngredients = recipe.ingredients;
-    console.log(recipe.ingredients);
     const recipesTime = recipe.time;
     const recipesDesc = recipe.description;
     const recipesAppliance = recipe.appliance;
@@ -95,4 +120,4 @@ function addUstensilsInRecipe(recipeInfo, recipesUstensils) {
   recipeInfo.appendChild(ustensils);
 }
 
-displayRecipes();
+displayRecipes(recipes);
