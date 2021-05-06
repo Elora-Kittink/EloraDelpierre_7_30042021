@@ -9,12 +9,18 @@ function searchBar() {
   for (let recipe of recipes) {
     let nameArray = recipe.name.split(" ");
     let descArray = recipe.description.split(" ");
+    let ingredientsArray = recipe.ingredients.map((ing) => {
+      return ing.ingredient;
+    });
+
     if (nameArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
       // choisir l'ordre qui a le plus de chance d'abouttir a un true rapidement//
       console.log("ça marche");
       recipesToDisplay.push(recipe);
     } else if (descArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
       console.log("ça marche");
+      recipesToDisplay.push(recipe);
+    } else if (ingredientsArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
       recipesToDisplay.push(recipe);
     } else {
       console.log("marche pas");
