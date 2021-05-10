@@ -27,29 +27,32 @@
           </div>
           <div id="search__tags" class="row"></div>
           <div id="search__sort" class="row">
-            <div class="dropdown">
-                <input class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <div id="search__sort__ingredients" class="col-1 dropdown">
+                <input id="search__sort__ingredients__input" class="btn btn-secondary dropdown-toggle" href="#" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown link
-            </input>
-              
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
+                </input>              
+                <ul id="search__sort__ingredients__ul" class="dropdown-menu" aria-labelledby="search__sort__ingredients__input">
+                  <!-- <li><a class="dropdown-item" href="#">Action</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                 </ul>
               </div>
-            <div id="search__sort__ingredients" class="col-1">
-              <input id="search__sort__ingredients__input" type="search" value="Ingredients" aria-label="trier par ingrédient" />
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div id="search__sort__appliance" class="col-1">
-              <input id="search__sort__appliance__input" type="search" value="Appareil" aria-label="trier par appareil" />
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div id="search__sort__ustensils" class="col-1">
-              <input id="search__sort__ustensils__input" type="search" value="Ustensiles" aria-label="trier par ustensiles" />
-              <i class="fas fa-chevron-down"> </i>
-            </div>
+              <div id="search__sort__appliance" class="col-1 dropdown">
+                <input id="search__sort__appliance__input" class="btn btn-secondary dropdown-toggle" href="#" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </input>              
+                <ul id="search__sort__appliance__ul" class="dropdown-menu" aria-labelledby="search__sort__appliance__input">
+                  
+                </ul>
+              </div>
+              <div id="search__sort__ustensils" class="col-1 dropdown">
+                <input id="search__sort__ustensils__input" class="btn btn-secondary dropdown-toggle" href="#" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </input>              
+                <ul id="search__sort__ustensils__ul" class="dropdown-menu" aria-labelledby="search__sort__ustensils__input">
+                  
+                </ul>
+              </div>
           </div>
         </section>
         <section id="result" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4"></section>

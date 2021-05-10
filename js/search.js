@@ -12,7 +12,6 @@ function searchBar() {
     let ingredientsArray = recipe.ingredients.map((ing) => {
       return ing.ingredient;
     });
-
     if (nameArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
       // choisir l'ordre qui a le plus de chance d'abouttir a un true rapidement//
       console.log("ça marche");
@@ -22,23 +21,50 @@ function searchBar() {
       recipesToDisplay.push(recipe);
     } else if (ingredientsArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
       recipesToDisplay.push(recipe);
-    } else {
-      console.log("marche pas");
     }
-
-    // console.log(nameArray);
-    // console.log(descArray);
+    console.log(recipesToDisplay.length);
+    if (recipesToDisplay.length == 0) {
+      resultGallery.innerText = "Aucun résultat";
+    }
   }
-  console.log(recipesToDisplay);
+
   resultGallery.innerHTML = "";
   displayRecipes(recipesToDisplay);
+}
+
+function ingredientTagSearch(recipesArray) {
+  let allIngredients = [];
+  let allIngredientSplit = [];
+  for (let recipe of recipesArray) {
+    allIngredients.push(
+      recipe.ingredients.map((ing) => {
+        return ing.ingredient.split(" ");
+      })
+    );
+  }
+  allIngredients = allIngredients.flat(2);
+  console.log(allIngredients);
+  let uniqueIngredientsArray = Array.from(new Set(allIngredients));
+  console.log(uniqueIngredientsArray);
+  for (let ingredient of uniqueIngredientsArray) {
+    const ulIngredient = document.getElementById("search__sort__ingredients__ul");
+    const liIngredient = document.createElement("li");
+    ulIngredient.appendChild(liIngredient);
+    const linkIngredient = document.createElement("a");
+    linkIngredient.setAttribute("class", "search__sort__ingredients__ul__li dropdown-item");
+    linkIngredient.setAttribute("href", "#");
+    linkIngredient.innerHTML = ingredient;
+  }
 }
 
 function displayRecipes(recipesArray) {
   const resultGallery = document.getElementById("result");
   const searchBarInput = document.getElementById("search__bar__input");
   searchBarInput.addEventListener("input", searchBar);
-
+  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
+  ingredientTagInput.addEventListener("click", function () {
+    ingredientTagSearch(recipesArray);
+  });
   for (let recipe of recipesArray) {
     const recipesName = recipe.name;
     const recipesIngredients = recipe.ingredients;
