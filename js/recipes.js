@@ -223,7 +223,7 @@ export const recipes = [
     ],
     time: 50,
     description:
-      "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crême fraiche. Laisser cuire au four pendant 30 minutes",
+      "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crème fraiche. Laisser cuire au four pendant 30 minutes",
     appliance: "Four",
     ustensils: ["moule à tarte", "saladier", "fourchette"],
   },
@@ -824,7 +824,7 @@ export const recipes = [
         quantity: 3,
       },
       {
-        ingredient: "Crème Fraîche",
+        ingredient: "Crème Fraiche",
         quantity: 20,
         unit: "cl",
       },
@@ -836,7 +836,7 @@ export const recipes = [
     ],
     time: 60,
     description:
-      "Etaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle. Battre les oeufs en ajoutant la crème fraîche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.",
+      "Etaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle. Battre les oeufs en ajoutant la crème fraiche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.",
     appliance: "Four",
     ustensils: ["moule à gateaux", "rouleau à patisserie", "fouet"],
   },
@@ -960,7 +960,7 @@ export const recipes = [
         quantity: 1,
       },
       {
-        ingredient: "Crème fraîche",
+        ingredient: "Crème fraiche",
         quantity: 4,
         unit: "cuillère à soupe",
       },
@@ -976,7 +976,7 @@ export const recipes = [
       },
     ],
     time: 15,
-    description: "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
+    description: "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraiche",
     appliance: "Casserolle",
     ustensils: ["couteau", "cuillère en bois"],
   },
@@ -1005,7 +1005,7 @@ export const recipes = [
         unit: "grammes",
       },
       {
-        ingredient: "Crème fraîche",
+        ingredient: "Crème fraiche",
         quantity: 10,
         unit: "cl",
       },
@@ -1195,7 +1195,7 @@ export const recipes = [
         unit: "grammes",
       },
       {
-        ingredient: "Crème fraîche",
+        ingredient: "Crème fraiche",
         quantity: 20,
         unit: "cl",
       },
@@ -1232,7 +1232,7 @@ export const recipes = [
         unit: "grammes",
       },
       {
-        ingredient: "Crème fraîche",
+        ingredient: "Crème fraiche",
         quantity: 2,
         unit: "cuillères à soupe",
       },
@@ -1640,7 +1640,7 @@ export const recipes = [
         unit: "grammes",
       },
       {
-        ingredient: "Crème Fraîche",
+        ingredient: "Crème Fraiche",
         quantity: 20,
         unit: "cl",
       },
@@ -1733,7 +1733,7 @@ export const recipes = [
         quantity: 6,
       },
       {
-        ingredient: "Poudre d'amendes",
+        ingredient: "Poudre d'amandes",
         quantity: 500,
         unit: "grammes",
       },
