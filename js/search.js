@@ -69,13 +69,20 @@ function ingredientTagSearch(recipesArray) {
     linkIngredient.innerHTML = ingredient;
     linkIngredient.addEventListener("click", (e) => {
       let IDingredientTagSelected = e.target.id.toLowerCase();
-      console.log(IDingredientTagSelected);
-      recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
-        console.log("test");
-        return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
-      });
-      console.log(recipesToDisplay2);
-      displayRecipes(recipesToDisplay2);
+      if (recipesToDisplay2.length == 0) {
+        let recipesFilteredByTag = recipes.filter((recipe) => {
+          console.log("test");
+          return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
+        });
+        displayRecipes(recipesFilteredByTag);
+      } else {
+        recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
+          console.log("test");
+          return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
+        });
+
+        displayRecipes(recipesToDisplay2);
+      }
     });
     liIngredient.appendChild(linkIngredient);
   }
