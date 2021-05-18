@@ -63,6 +63,7 @@ function ingredientTagSearch(recipesArray) {
 
 function displayIngredients(ArrayOfIngredientsToDisplay) {
   const ulIngredient = document.getElementById("search__sort__ingredients__ul");
+  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ulIngredient.innerHTML = "";
   for (let ingredient of ArrayOfIngredientsToDisplay) {
     const liIngredient = document.createElement("li");
@@ -73,13 +74,17 @@ function displayIngredients(ArrayOfIngredientsToDisplay) {
     linkIngredient.setAttribute("id", ingredient);
     linkIngredient.innerHTML = ingredient;
     linkIngredient.addEventListener("click", (e) => {
+      ingredientTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
       let IDingredientTagSelected = e.target.id.toLowerCase();
+      console.log(recipesToDisplay2.length);
       if (recipesToDisplay2.length == 0) {
         let recipesFilteredByTag = recipes.filter((recipe) => {
           console.log("test");
           return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
         });
         displayRecipes(recipesFilteredByTag);
+        console.log(recipesFilteredByTag);
+        ingredientTagSearch(recipesFilteredByTag);
       } else {
         recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
           console.log("test");
@@ -88,10 +93,11 @@ function displayIngredients(ArrayOfIngredientsToDisplay) {
 
         displayRecipes(recipesToDisplay2);
       }
+      displayTagIngredientSelected(IDingredientTagSelected);
     });
     liIngredient.appendChild(linkIngredient);
   }
-  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
+
   ingredientTagInput.addEventListener("input", function () {
     ingredientTagInputSearch(ArrayOfIngredientsToDisplay);
   });
@@ -142,6 +148,18 @@ function displayRecipes(recipesArray) {
       addUstensilsInRecipe(recipeInfo, recipesUstensils);
     }
   }
+}
+
+function displayTagIngredientSelected(ingredientId) {
+  console.log("test display tag selected");
+  const tagZone = document.getElementById("search__tags");
+  let tagCell = document.createElement("div");
+  tagCell.classList.add("search__tags__cell");
+  tagZone.appendChild(tagCell);
+  let tagClose = document.createElement("button");
+  tagClose.classList.add("search__tags__cell__close");
+  tagCell.appendChild(tagClose);
+  tagCell.innerText = ingredientId;
 }
 
 function addImgInRecipe(recipeCard) {
