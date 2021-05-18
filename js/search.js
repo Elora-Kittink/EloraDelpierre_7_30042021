@@ -78,20 +78,20 @@ function displayIngredients(ArrayOfIngredientsToDisplay) {
       let IDingredientTagSelected = e.target.id.toLowerCase();
       console.log(recipesToDisplay2.length);
       if (recipesToDisplay2.length == 0) {
+        //si il n'y a pas déjà eu de tri par searchbar, trier à partir de recipes//
         let recipesFilteredByTag = recipes.filter((recipe) => {
-          console.log("test");
           return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
         });
+        recipesToDisplay2 = recipesFilteredByTag;
         displayRecipes(recipesFilteredByTag);
-        console.log(recipesFilteredByTag);
         ingredientTagSearch(recipesFilteredByTag);
       } else {
+        // si il y a déjà eu un tri searchbar re trier parmis les recettes triées par searchbar//
         recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
-          console.log("test");
           return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
         });
-
         displayRecipes(recipesToDisplay2);
+        ingredientTagSearch(recipesToDisplay2);
       }
       displayTagIngredientSelected(IDingredientTagSelected);
     });
