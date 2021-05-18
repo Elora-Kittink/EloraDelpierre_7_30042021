@@ -51,14 +51,14 @@ function ingredientTagSearch(recipesArray) {
     allIngredients.push(
       recipe.ingredients.map((ing) => {
         // mettre dans le tableau allIngredients tous les ingrédients//
-        return ing.ingredient; //ajouter .split ici si on veut mot par mot//
+        return ing.ingredient.toLowerCase(); //ajouter .split ici si on veut mot par mot//
       })
     );
   }
   allIngredients = allIngredients.flat(); // supprimer les profondeurs de tableau sur 2 niveaux//
   let uniqueIngredientsArray = Array.from(new Set(allIngredients)); //enlever les doublons//
+  displayIngredients(uniqueIngredientsArray.sort());
   console.log(uniqueIngredientsArray);
-  displayIngredients(uniqueIngredientsArray);
 }
 
 function displayIngredients(ArrayOfIngredientsToDisplay) {
@@ -76,7 +76,6 @@ function displayIngredients(ArrayOfIngredientsToDisplay) {
     linkIngredient.addEventListener("click", (e) => {
       ingredientTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
       let IDingredientTagSelected = e.target.id.toLowerCase();
-      console.log(recipesToDisplay2.length);
       if (recipesToDisplay2.length == 0) {
         //si il n'y a pas déjà eu de tri par searchbar, trier à partir de recipes//
         let recipesFilteredByTag = recipes.filter((recipe) => {
@@ -151,7 +150,6 @@ function displayRecipes(recipesArray) {
 }
 
 function displayTagIngredientSelected(ingredientId) {
-  console.log("test display tag selected");
   const tagZone = document.getElementById("search__tags");
   let tagCell = document.createElement("div");
   tagCell.classList.add("search__tags__cell");
