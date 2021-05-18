@@ -1,5 +1,5 @@
 import { recipes } from "./recipes.js";
-
+//  ../sass/dart-sass/sass css/style.scss css/style.css --watch //
 let recipesToDisplay2 = [];
 
 function search(searchValue) {
@@ -25,11 +25,26 @@ function search(searchValue) {
   return recipesToDisplay2;
 }
 
+function search2(searchValue) {
+  if (searchValue.length >= 3) {
+    let recipesSorted = recipes.filter((recipe) => {
+      return (
+        recipe.name.toLowerCase().includes(searchValue) ||
+        recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) ||
+        recipe.ustensils.some((u) => u.toLowerCase().includes(searchValue)) ||
+        recipe.appliance.toLowerCase().includes(searchValue)
+      );
+    });
+    recipesToDisplay2 = recipesSorted;
+  }
+  return recipesToDisplay2;
+}
+
 function searchBar() {
   const resultGallery = document.getElementById("result");
   const searchBarInput = document.getElementById("search__bar__input");
   let searchValue = searchBarInput.value;
-  recipesToDisplay2 = search(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
+  recipesToDisplay2 = search2(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
   const ulIngredient = document.getElementById("search__sort__ingredients__ul");
   // let liIngredients = document.getElementsByClassName("search__sort__ingredients__ul__li");
   resultGallery.innerHTML = "";
