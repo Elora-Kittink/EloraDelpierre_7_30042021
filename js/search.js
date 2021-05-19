@@ -78,7 +78,7 @@ function displayIngredients(ArrayOfIngredientsToDisplay) {
     const liIngredient = document.createElement("li");
     ulIngredient.appendChild(liIngredient);
     const linkIngredient = document.createElement("a");
-    linkIngredient.classList.add("search__sort__ingredients__ul__li dropdown-item");
+    linkIngredient.classList.add("search__sort__ingredients__ul__li", "dropdown-item");
     linkIngredient.href = "#";
     linkIngredient.id = ingredient;
     linkIngredient.innerHTML = ingredient;
