@@ -28,11 +28,7 @@ function search2(searchValue) {
   let recipesSorted = [];
   if (searchValue.length >= 3) {
     recipesSorted = recipes.filter((recipe) => {
-      return (
-        recipe.name.toLowerCase().includes(searchValue) || recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) || recipe.description.toLowerCase().includes(searchValue)
-        // recipe.ustensils.some((u) => u.toLowerCase().includes(searchValue)) ||
-        // recipe.appliance.toLowerCase().includes(searchValue)
-      );
+      return recipe.name.toLowerCase().includes(searchValue) || recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) || recipe.description.toLowerCase().includes(searchValue);
     });
   }
   return recipesSorted;
@@ -82,7 +78,7 @@ function displayIngredients(ArrayOfIngredientsToDisplay) {
     const liIngredient = document.createElement("li");
     ulIngredient.appendChild(liIngredient);
     const linkIngredient = document.createElement("a");
-    linkIngredient.classList.add = "search__sort__ingredients__ul__li dropdown-item";
+    linkIngredient.classList.add("search__sort__ingredients__ul__li dropdown-item");
     linkIngredient.href = "#";
     linkIngredient.id = ingredient;
     linkIngredient.innerHTML = ingredient;
@@ -175,34 +171,34 @@ function displayTagIngredientSelected(ingredientId) {
 
 function addImgInRecipe(recipeCard) {
   const recipeImg = document.createElement("div");
-  recipeImg.setAttribute("class", "recipe__img ");
+  recipeImg.classList.add("recipe__img");
   recipeCard.appendChild(recipeImg);
 }
 
 function addTitleInRecipe(recipeInfo, recipesName, recipesTime) {
   const recipeTitle = document.createElement("div");
-  recipeTitle.setAttribute("class", "recipe__info__title ");
+  recipeTitle.classList.add("recipe__info__title");
   recipeInfo.appendChild(recipeTitle);
   const recipeName = document.createElement("p");
-  recipeName.setAttribute("class", "recipe__info__title__name");
+  recipeName.classList.add("recipe__info__title__name");
   recipeName.textContent = recipesName;
   recipeTitle.appendChild(recipeName);
   const recipeTime = document.createElement("p");
-  recipeTime.setAttribute("class", "recipe__info__title__time");
+  recipeTime.classList.add("recipe__info__title__time");
   recipeTime.innerHTML = '<i class="far fa-clock"></i>' + recipesTime + " min";
   recipeTitle.appendChild(recipeTime);
 }
 
 function addIngredientsInrecipe(recipesIngredients, recipeInfo) {
   const ingredientsList = document.createElement("div");
-  ingredientsList.setAttribute("class", "recipe__info__ingredients");
+  ingredientsList.classList.add("recipe__info__ingredients");
   recipeInfo.appendChild(ingredientsList);
   for (let ingredient of recipesIngredients) {
     const ingredientName = ingredient.ingredient;
     const ingredientQty = ingredient.quantity;
     const ingredientUnit = ingredient.unit;
     let ingredients = document.createElement("p");
-    ingredients.setAttribute("class", "recipe__info__ingredients__ingredient");
+    ingredients.classList.add("recipe__info__ingredients__ingredient");
     ingredients.innerHTML = ingredientName;
     ingredientsList.appendChild(ingredients);
     if (ingredient.quantity !== undefined) {
@@ -216,21 +212,21 @@ function addIngredientsInrecipe(recipesIngredients, recipeInfo) {
 
 function addDescInRecipe(recipeInfo, recipesDesc) {
   const instructions = document.createElement("p");
-  instructions.setAttribute("class", "recipe__info__description");
+  instructions.classList.add("recipe__info__description");
   instructions.innerHTML = recipesDesc;
   recipeInfo.appendChild(instructions);
 }
 
 function addApplianceInRecipe(recipeInfo, recipesAppliance) {
   const appliance = document.createElement("p");
-  appliance.setAttribute("class", "recipe__info__appliance");
+  appliance.classList.add("recipe__info__appliance");
   appliance.innerHTML = recipesAppliance;
   recipeInfo.appendChild(appliance);
 }
 
 function addUstensilsInRecipe(recipeInfo, recipesUstensils) {
   const ustensils = document.createElement("p");
-  ustensils.setAttribute("class", "recipe__info__ustensils");
+  ustensils.classList.add("recipe__info__ustensils");
   ustensils.innerHTML = recipesUstensils;
   recipeInfo.appendChild(ustensils);
 }
