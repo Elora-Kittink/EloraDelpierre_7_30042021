@@ -19,25 +19,23 @@ function search(searchValue) {
         recipesSorted.push(recipe);
       }
     }
-    recipesToDisplay2 = recipesSorted;
   }
 
-  return recipesToDisplay2;
+  return recipesSorted;
 }
 
 function search2(searchValue) {
+  let recipesSorted = [];
   if (searchValue.length >= 3) {
-    let recipesSorted = recipes.filter((recipe) => {
+    recipesSorted = recipes.filter((recipe) => {
       return (
-        recipe.name.toLowerCase().includes(searchValue) ||
-        recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) ||
-        recipe.ustensils.some((u) => u.toLowerCase().includes(searchValue)) ||
-        recipe.appliance.toLowerCase().includes(searchValue)
+        recipe.name.toLowerCase().includes(searchValue) || recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) || recipe.description.toLowerCase().includes(searchValue)
+        // recipe.ustensils.some((u) => u.toLowerCase().includes(searchValue)) ||
+        // recipe.appliance.toLowerCase().includes(searchValue)
       );
     });
-    recipesToDisplay2 = recipesSorted;
   }
-  return recipesToDisplay2;
+  return recipesSorted;
 }
 
 function searchBar() {
@@ -84,9 +82,9 @@ function displayIngredients(ArrayOfIngredientsToDisplay) {
     const liIngredient = document.createElement("li");
     ulIngredient.appendChild(liIngredient);
     const linkIngredient = document.createElement("a");
-    linkIngredient.setAttribute("class", "search__sort__ingredients__ul__li dropdown-item");
-    linkIngredient.setAttribute("href", "#");
-    linkIngredient.setAttribute("id", ingredient);
+    linkIngredient.classList.add = "search__sort__ingredients__ul__li dropdown-item";
+    linkIngredient.href = "#";
+    linkIngredient.id = ingredient;
     linkIngredient.innerHTML = ingredient;
     linkIngredient.addEventListener("click", (e) => {
       ingredientTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
