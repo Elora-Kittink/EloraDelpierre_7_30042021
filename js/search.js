@@ -61,6 +61,7 @@ function searchBar() {
 //----------------------------------------------INGREDIENTS----------------------------------------------------------------//
 
 function ingredientTagSearch(recipesArray) {
+  //créé un tableau regroupant tous les ingrédients sans doublons d'un tableau qu'on lui donne
   let allIngredients = [];
   for (let recipe of recipesArray) {
     allIngredients.push(
@@ -70,13 +71,14 @@ function ingredientTagSearch(recipesArray) {
       })
     );
   }
-  allIngredients = allIngredients.flat(); // supprimer les profondeurs de tableau sur 2 niveaux//
+  allIngredients = allIngredients.flat(); // supprimer les profondeurs de tableau //
   let uniqueIngredientsArray = Array.from(new Set(allIngredients)); //enlever les doublons//
-  displayIngredients(uniqueIngredientsArray.sort());
+  displayIngredients(uniqueIngredientsArray.sort()); //afficher les ingrédients par ordre alphabetique
   console.log(uniqueIngredientsArray);
 }
 
 function displayIngredients(arrayOfIngredientsToDisplay) {
+  //affiche les ingrédients présents dans le tableau qu'on lui donne
   const ulIngredient = document.getElementById("search__sort__ingredients__ul");
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ulIngredient.innerHTML = "";
@@ -88,19 +90,57 @@ function displayIngredients(arrayOfIngredientsToDisplay) {
     linkIngredient.href = "#";
     linkIngredient.id = ingredient;
     linkIngredient.innerHTML = ingredient;
-    linkIngredient.addEventListener("click", selectAnIngredientTag);
+    linkIngredient.addEventListener("click", selectAnIngredientTag); // écoute si on clique sur un des ingrédients
     liIngredient.appendChild(linkIngredient);
   }
   ingredientTagInput.addEventListener("input", function () {
+    // écoute si on rentre une valeur dans le champs de recherche d'ingrédients
     ingredientTagInputSearch(arrayOfIngredientsToDisplay);
   });
 }
 
+function selectAnIngredientTag(e) {
+  // créé un tableau regroupant les recettes dont les ingrédients contiennent l'ingrédient selectionné et réactualise avec les recettes affichées et les tags restants
+  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
+  ingredientTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
+  let IDingredientTagSelected = e.target.id.toLowerCase();
+  if (recipesToDisplay2.length == 0) {
+    //si il n'y a pas déjà eu de tri par searchbar, trier à partir de recipes//
+    let recipesFilteredByTag = recipes.filter((recipe) => {
+      return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
+    });
+    recipesToDisplay2 = recipesFilteredByTag;
+    displayRecipes(recipesFilteredByTag);
+    ingredientTagSearch(recipesFilteredByTag);
+  } else {
+    // si il y a déjà eu un tri searchbar re trier parmis les recettes triées par searchbar//
+    recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
+      return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
+    });
+    displayRecipes(recipesToDisplay2);
+    ingredientTagSearch(recipesToDisplay2);
+  }
+  displayTagApplianceSelected(IDingredientTagSelected);
+}
+
 function ingredientTagInputSearch(ingredientsArray) {
+  // créé un tableau regroupants les ingrédients incluant la valeure entrée dans l'input et actualise l'affichage des ingrédient correspondants
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   let ingredientTagValue = ingredientTagInput.value;
   let ingredientsTagArray = ingredientsArray.filter((ing) => ing.toLowerCase().includes(ingredientTagValue));
   displayIngredients(ingredientsTagArray);
+}
+
+function displayTagIngredientSelected(ingredientId) {
+  // affiche le tag selectionné
+  const tagZone = document.getElementById("search__tags");
+  let tagCell = document.createElement("div");
+  tagCell.classList.add("search__tags__cell", "ingredient-tag");
+  tagZone.appendChild(tagCell);
+  let tagClose = document.createElement("button");
+  tagClose.classList.add("search__tags__cell__close");
+  tagCell.appendChild(tagClose);
+  tagCell.innerText = ingredientId;
 }
 
 //---------------------------------------------APPLIANCE------------------------------------------------------------//
@@ -165,30 +205,98 @@ function selectAnApplianceTag(e) {
   displayTagIngredientSelected(IDapplianceTagSelected);
 }
 
-//-------------------------------------------------USTENSILES------------------------------------------------------------------------------//
+function displayTagApplianceSelected(applianceId) {
+  const tagZone = document.getElementById("search__tags");
+  let tagCell = document.createElement("div");
+  tagCell.classList.add("search__tags__cell", "appliance-tag");
+  tagZone.appendChild(tagCell);
+  let tagClose = document.createElement("button");
+  tagClose.classList.add("search__tags__cell__close");
+  tagCell.appendChild(tagClose);
+  tagCell.innerText = applianceId;
+}
 
-function selectAnIngredientTag(e) {
-  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
-  ingredientTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
-  let IDingredientTagSelected = e.target.id.toLowerCase();
+//-------------------------------------------------USTENSILS------------------------------------------------------------------------------//
+
+function ustensilsTagSearch(recipesArray) {
+  //créé un tableau regroupant tous les ingrédients sans doublons d'un tableau qu'on lui donne
+  let allUstensils = [];
+  for (let recipe of recipesArray) {
+    allUstensils.push(recipe.ustensils);
+  }
+  allUstensils = allUstensils.flat(); // supprimer les profondeurs de tableau //
+  let uniqueUstensilsArray = Array.from(new Set(allUstensils)); //enlever les doublons//
+  displayUstensils(uniqueUstensilsArray.sort()); //afficher les ingrédients par ordre alphabetique
+  console.log(uniqueUstensilsArray);
+}
+
+function displayUstensils(arrayOfUstensilsToDisplay) {
+  //affiche les ingrédients présents dans le tableau qu'on lui donne
+  const ulUstensils = document.getElementById("search__sort__ustensils__ul");
+  const ustensilsTagInput = document.getElementById("search__sort__ustensils__input");
+  ulUstensils.innerHTML = "";
+  for (let ustensil of arrayOfUstensilsToDisplay) {
+    const liUstensil = document.createElement("li");
+    ulUstensils.appendChild(liUstensil);
+    const linkUstensil = document.createElement("a");
+    linkUstensil.classList.add("search__sort__ustensils__ul__li", "dropdown-item");
+    linkUstensil.href = "#";
+    linkUstensil.id = ustensil;
+    linkUstensil.innerHTML = ustensil;
+    linkUstensil.addEventListener("click", selectAnUstensilTag); // écoute si on clique sur un des ingrédients
+    liUstensil.appendChild(linkUstensil);
+  }
+  ustensilsTagInput.addEventListener("input", function () {
+    // écoute si on rentre une valeur dans le champs de recherche d'ingrédients
+    ustensilTagInputSearch(arrayOfUstensilsToDisplay);
+  });
+}
+
+function selectAnUstensilTag(e) {
+  // créé un tableau regroupant les recettes dont les ingrédients contiennent l'ingrédient selectionné et réactualise avec les recettes affichées et les tags restants
+  const ustensilsTagInput = document.getElementById("search__sort__ustensils__input");
+  ustensilsTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
+  let IDustensilTagSelected = e.target.id.toLowerCase();
   if (recipesToDisplay2.length == 0) {
     //si il n'y a pas déjà eu de tri par searchbar, trier à partir de recipes//
     let recipesFilteredByTag = recipes.filter((recipe) => {
-      return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
+      return recipe.ustensils.includes(IDustensilTagSelected);
     });
     recipesToDisplay2 = recipesFilteredByTag;
     displayRecipes(recipesFilteredByTag);
-    ingredientTagSearch(recipesFilteredByTag);
+    ustensilsTagSearch(recipesFilteredByTag);
   } else {
     // si il y a déjà eu un tri searchbar re trier parmis les recettes triées par searchbar//
     recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
-      return recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(IDingredientTagSelected));
+      return recipe.ustensils.includes(IDustensilTagSelected);
     });
     displayRecipes(recipesToDisplay2);
-    ingredientTagSearch(recipesToDisplay2);
+    ustensilsTagSearch(recipesToDisplay2);
   }
-  displayTagApplianceSelected(IDingredientTagSelected);
+  displayTagUstensilSelected(IDustensilTagSelected);
 }
+
+function ustensilTagInputSearch(ustensilsArray) {
+  // créé un tableau regroupants les ingrédients incluant la valeur entrée dans l'input et actualise l'affichage des ingrédient correspondants
+  const ustensilTagInput = document.getElementById("search__sort__ustensils__input");
+  let ustensilTagValue = ustensilTagInput.value;
+  let ustensilsTagArray = ustensilsArray.filter((ing) => ing.toLowerCase().includes(ustensilTagValue));
+  displayUstensils(ustensilsTagArray);
+}
+
+function displayTagUstensilSelected(ustensilId) {
+  // affiche le tag selectionné
+  const tagZone = document.getElementById("search__tags");
+  let tagCell = document.createElement("div");
+  tagCell.classList.add("search__tags__cell", "ustensil-tag");
+  tagZone.appendChild(tagCell);
+  let tagClose = document.createElement("button");
+  tagClose.classList.add("search__tags__cell__close");
+  tagCell.appendChild(tagClose);
+  tagCell.innerText = ustensilId;
+}
+
+//-----------------------------------------GALLERY-------------------------------------------------------------------//
 
 function displayRecipes(recipesArray) {
   const resultGallery = document.getElementById("result");
@@ -228,28 +336,6 @@ function displayRecipes(recipesArray) {
       addUstensilsInRecipe(recipeInfo, recipesUstensils);
     }
   }
-}
-
-function displayTagIngredientSelected(ingredientId) {
-  const tagZone = document.getElementById("search__tags");
-  let tagCell = document.createElement("div");
-  tagCell.classList.add("search__tags__cell", "ingredient-tag");
-  tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerText = ingredientId;
-}
-
-function displayTagApplianceSelected(applianceId) {
-  const tagZone = document.getElementById("search__tags");
-  let tagCell = document.createElement("div");
-  tagCell.classList.add("search__tags__cell", "appliance-tag");
-  tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerText = applianceId;
 }
 
 function addImgInRecipe(recipeCard) {
@@ -317,3 +403,4 @@ function addUstensilsInRecipe(recipeInfo, recipesUstensils) {
 displayRecipes(recipes);
 ingredientTagSearch(recipes);
 applianceTagSearch(recipes);
+ustensilsTagSearch(recipes);
