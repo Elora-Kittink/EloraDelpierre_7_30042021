@@ -13,6 +13,16 @@ body {
           background-color: #e7e7e7;
           border-radius: 5px;
           border: none;
+          color: white;
+          border-radius: 5px 0 0 5px;
+        }
+        #basic-addon1 {
+          border: none;
+          border-radius: 0 5px 5px 0;
+          background-color: #e7e7e7;
+          i {
+            font-size: 1.5em;
+          }
         }
       }
       &__sort {
@@ -23,11 +33,47 @@ body {
           width: 170px;
           height: 70px;
           margin: 10px;
+          border-radius: 5px;
+          color: white;
           &__input {
             background-color: #3282f7;
             border: none;
             width: 150px;
             height: 70px;
+            text-align: start;
+            width: 80%;
+            color: white;
+          }
+          &__input:focus + #ingredient-chevron-down {
+            display: none;
+          }
+          &__input:focus ~ #ingredient-chevron-up {
+            display: inline-block;
+          }
+          ::placeholder {
+            color: white;
+            font-weight: 700;
+          }
+          .dropdown-menu.show {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            height: 350px;
+            width: 400px;
+            background-color: #3282f7;
+            overflow: scroll;
+            li {
+              text-align: left;
+              background-color: #3282f7;
+              border: #3282f7;
+              a {
+                color: white;
+              }
+            }
+          }
+
+          .fa-chevron-up {
+            display: none;
           }
         }
         &__appliance {
@@ -35,11 +81,45 @@ body {
           width: 170px;
           height: 70px;
           margin: 10px;
+          border-radius: 5px;
+          color: white;
           &__input {
             background-color: #68d9a4;
             border: none;
             width: 150px;
             height: 70px;
+            text-align: start;
+            width: 80%;
+            color: white;
+          }
+          &__input:focus + #appliance-chevron-down {
+            display: none;
+          }
+          &__input:focus ~ #appliance-chevron-up {
+            display: inline-block;
+          }
+          ::placeholder {
+            color: white;
+            font-weight: 700;
+          }
+          .dropdown-menu.show {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            height: 350px;
+            width: auto;
+            background-color: #68d9a4;
+            overflow: scroll;
+            li {
+              background-color: #68d9a4;
+              a {
+                color: white;
+              }
+            }
+          }
+
+          .fa-chevron-up {
+            display: none;
           }
         }
         &__ustensils {
@@ -47,20 +127,57 @@ body {
           width: 170px;
           height: 70px;
           margin: 10px;
+          border-radius: 5px;
+          color: white;
           &__input {
             background-color: #ed6454;
             border: none;
             width: 150px;
             height: 70px;
+            text-align: start;
+            width: 80%;
+            color: white;
+          }
+          &__input:focus + #ustensil-chevron-down {
+            display: none;
+          }
+          &__input:focus ~ #ustensil-chevron-up {
+            display: inline-block;
+          }
+          ::placeholder {
+            color: white;
+            font-weight: 700;
+          }
+          .dropdown-menu.show {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            height: 350px;
+            width: auto;
+            background-color: #ed6454;
+            overflow: scroll;
+            li {
+              background-color: #ed6454;
+              a {
+                color: white;
+              }
+            }
+          }
+
+          .fa-chevron-up {
+            display: none;
           }
         }
       }
     }
     #result {
       .col {
+        height: 390px;
+
         .recipe {
           height: 390px;
           overflow: hidden;
+          border-radius: 0 0 5px 5px;
           &__img {
             background-color: #c7bebe;
             width: 100%;
@@ -91,6 +208,9 @@ body {
             &__description {
               font-size: 0.75em;
               width: 160px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: normal;
             }
             &__appliance {
               display: none;

@@ -50,6 +50,7 @@ function searchBar() {
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ingredientTagInput.addEventListener("click", function () {
     ulIngredient.innerHTML = "";
+
     if (recipesToDisplay2.length == 0) {
       ingredientTagSearch(recipes);
     } else {
@@ -95,6 +96,7 @@ function displayIngredients(arrayOfIngredientsToDisplay) {
   }
   ingredientTagInput.addEventListener("input", function () {
     // écoute si on rentre une valeur dans le champs de recherche d'ingrédients
+
     ingredientTagInputSearch(arrayOfIngredientsToDisplay);
   });
 }
@@ -219,19 +221,20 @@ function displayTagApplianceSelected(applianceId) {
 //-------------------------------------------------USTENSILS------------------------------------------------------------------------------//
 
 function ustensilsTagSearch(recipesArray) {
-  //créé un tableau regroupant tous les ingrédients sans doublons d'un tableau qu'on lui donne
+  //créé un tableau regroupant tous les ustensiles sans doublons d'un tableau qu'on lui donne
   let allUstensils = [];
   for (let recipe of recipesArray) {
     allUstensils.push(recipe.ustensils);
   }
+
   allUstensils = allUstensils.flat(); // supprimer les profondeurs de tableau //
   let uniqueUstensilsArray = Array.from(new Set(allUstensils)); //enlever les doublons//
-  displayUstensils(uniqueUstensilsArray.sort()); //afficher les ingrédients par ordre alphabetique
+  displayUstensils(uniqueUstensilsArray.sort()); //afficher les ustensiles par ordre alphabetique
   console.log(uniqueUstensilsArray);
 }
 
 function displayUstensils(arrayOfUstensilsToDisplay) {
-  //affiche les ingrédients présents dans le tableau qu'on lui donne
+  //affiche les ustensiles présents dans le tableau qu'on lui donne
   const ulUstensils = document.getElementById("search__sort__ustensils__ul");
   const ustensilsTagInput = document.getElementById("search__sort__ustensils__input");
   ulUstensils.innerHTML = "";
@@ -243,19 +246,20 @@ function displayUstensils(arrayOfUstensilsToDisplay) {
     linkUstensil.href = "#";
     linkUstensil.id = ustensil;
     linkUstensil.innerHTML = ustensil;
-    linkUstensil.addEventListener("click", selectAnUstensilTag); // écoute si on clique sur un des ingrédients
+    linkUstensil.addEventListener("click", selectAnUstensilTag); // écoute si on clique sur un des ustensiles
     liUstensil.appendChild(linkUstensil);
   }
   ustensilsTagInput.addEventListener("input", function () {
-    // écoute si on rentre une valeur dans le champs de recherche d'ingrédients
+    // écoute si on rentre une valeur dans le champs de recherche d'ustensiles
+
     ustensilTagInputSearch(arrayOfUstensilsToDisplay);
   });
 }
 
 function selectAnUstensilTag(e) {
-  // créé un tableau regroupant les recettes dont les ingrédients contiennent l'ingrédient selectionné et réactualise avec les recettes affichées et les tags restants
+  // créé un tableau regroupant les recettes dont les ustensiles contiennent l'ustensile selectionné et réactualise avec les recettes affichées et les tags restants
   const ustensilsTagInput = document.getElementById("search__sort__ustensils__input");
-  ustensilsTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
+  ustensilsTagInput.value = ""; // quand on selectionne un ustensile le champs de saisie se vide//
   let IDustensilTagSelected = e.target.id.toLowerCase();
   if (recipesToDisplay2.length == 0) {
     //si il n'y a pas déjà eu de tri par searchbar, trier à partir de recipes//
@@ -277,7 +281,7 @@ function selectAnUstensilTag(e) {
 }
 
 function ustensilTagInputSearch(ustensilsArray) {
-  // créé un tableau regroupants les ingrédients incluant la valeur entrée dans l'input et actualise l'affichage des ingrédient correspondants
+  // créé un tableau regroupants les ustensiles incluant la valeur entrée dans l'input et actualise l'affichage des ustensiles correspondants
   const ustensilTagInput = document.getElementById("search__sort__ustensils__input");
   let ustensilTagValue = ustensilTagInput.value;
   let ustensilsTagArray = ustensilsArray.filter((ing) => ing.toLowerCase().includes(ustensilTagValue));

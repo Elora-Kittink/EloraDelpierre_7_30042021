@@ -9,6 +9,16 @@ body main #search__bar__input {
   background-color: #e7e7e7;
   border-radius: 5px;
   border: none;
+  color: white;
+  border-radius: 5px 0 0 5px;
+}
+body main #search__bar #basic-addon1 {
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #e7e7e7;
+}
+body main #search__bar #basic-addon1 i {
+  font-size: 1.5em;
 }
 body main #search__sort {
   display: flex;
@@ -19,40 +29,145 @@ body main #search__sort__ingredients {
   width: 170px;
   height: 70px;
   margin: 10px;
+  border-radius: 5px;
+  color: white;
 }
 body main #search__sort__ingredients__input {
   background-color: #3282f7;
   border: none;
   width: 150px;
   height: 70px;
+  text-align: start;
+  width: 80%;
+  color: white;
+}
+body main #search__sort__ingredients__input:focus + #ingredient-chevron-down {
+  display: none;
+}
+body main #search__sort__ingredients__input:focus ~ #ingredient-chevron-up {
+  display: inline-block;
+}
+body main #search__sort__ingredients ::placeholder {
+  color: white;
+  font-weight: 700;
+}
+body main #search__sort__ingredients .dropdown-menu.show {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 350px;
+  width: 400px;
+  background-color: #3282f7;
+  overflow: scroll;
+}
+body main #search__sort__ingredients .dropdown-menu.show li {
+  text-align: left;
+  background-color: #3282f7;
+  border: #3282f7;
+}
+body main #search__sort__ingredients .dropdown-menu.show li a {
+  color: white;
+}
+body main #search__sort__ingredients .fa-chevron-up {
+  display: none;
 }
 body main #search__sort__appliance {
   background-color: #68d9a4;
   width: 170px;
   height: 70px;
   margin: 10px;
+  border-radius: 5px;
+  color: white;
 }
 body main #search__sort__appliance__input {
   background-color: #68d9a4;
   border: none;
   width: 150px;
   height: 70px;
+  text-align: start;
+  width: 80%;
+  color: white;
+}
+body main #search__sort__appliance__input:focus + #appliance-chevron-down {
+  display: none;
+}
+body main #search__sort__appliance__input:focus ~ #appliance-chevron-up {
+  display: inline-block;
+}
+body main #search__sort__appliance ::placeholder {
+  color: white;
+  font-weight: 700;
+}
+body main #search__sort__appliance .dropdown-menu.show {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 350px;
+  width: auto;
+  background-color: #68d9a4;
+  overflow: scroll;
+}
+body main #search__sort__appliance .dropdown-menu.show li {
+  background-color: #68d9a4;
+}
+body main #search__sort__appliance .dropdown-menu.show li a {
+  color: white;
+}
+body main #search__sort__appliance .fa-chevron-up {
+  display: none;
 }
 body main #search__sort__ustensils {
   background-color: #ed6454;
   width: 170px;
   height: 70px;
   margin: 10px;
+  border-radius: 5px;
+  color: white;
 }
 body main #search__sort__ustensils__input {
   background-color: #ed6454;
   border: none;
   width: 150px;
   height: 70px;
+  text-align: start;
+  width: 80%;
+  color: white;
+}
+body main #search__sort__ustensils__input:focus + #ustensil-chevron-down {
+  display: none;
+}
+body main #search__sort__ustensils__input:focus ~ #ustensil-chevron-up {
+  display: inline-block;
+}
+body main #search__sort__ustensils ::placeholder {
+  color: white;
+  font-weight: 700;
+}
+body main #search__sort__ustensils .dropdown-menu.show {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 350px;
+  width: auto;
+  background-color: #ed6454;
+  overflow: scroll;
+}
+body main #search__sort__ustensils .dropdown-menu.show li {
+  background-color: #ed6454;
+}
+body main #search__sort__ustensils .dropdown-menu.show li a {
+  color: white;
+}
+body main #search__sort__ustensils .fa-chevron-up {
+  display: none;
+}
+body main #result .col {
+  height: 390px;
 }
 body main #result .col .recipe {
   height: 390px;
   overflow: hidden;
+  border-radius: 0 0 5px 5px;
 }
 body main #result .col .recipe__img {
   background-color: #c7bebe;
@@ -85,6 +200,9 @@ body main #result .col .recipe__info__ingredients__ingredient {
 body main #result .col .recipe__info__description {
   font-size: 0.75em;
   width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 body main #result .col .recipe__info__appliance {
   display: none;
