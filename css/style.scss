@@ -28,80 +28,78 @@ body {
       &__sort {
         display: flex;
         justify-content: flex-start;
-        &__ingredients {
-          background-color: #3282f7;
+        .dropdown {
           width: 170px;
           height: 70px;
           margin: 10px;
           border-radius: 5px;
           color: white;
-          &__input {
+          position: relative;
+          padding: 0px;
+        }
+        .dropdown-toggle {
+          border: none;
+          width: 150px;
+          height: 70px;
+          text-align: start;
+          width: 100%;
+          color: white;
+        }
+        ::placeholder {
+          color: white;
+          font-weight: 700;
+        }
+        .dropdown-toggle:focus + .fa-chevron-down {
+          display: none;
+          position: absolute;
+          top: 25px;
+          right: 15px;
+        }
+        .dropdown-toggle:focus ~ .fa-chevron-up {
+          display: inline-block;
+        }
+        .fa-chevron-up {
+          display: none;
+          position: absolute;
+          top: 25px;
+          right: 15px;
+        }
+        .fa-chevron-down {
+          position: absolute;
+          top: 25px;
+          right: 15px;
+        }
+        .dropdown-menu.show {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          width: 605px;
+          background-color: #3282f7;
+
+          li {
+            text-align: left;
             background-color: #3282f7;
-            border: none;
-            width: 150px;
-            height: 70px;
-            text-align: start;
-            width: 80%;
-            color: white;
-          }
-          &__input:focus + #ingredient-chevron-down {
-            display: none;
-          }
-          &__input:focus ~ #ingredient-chevron-up {
-            display: inline-block;
-          }
-          ::placeholder {
-            color: white;
-            font-weight: 700;
-          }
-          .dropdown-menu.show {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            height: 350px;
-            width: 400px;
-            background-color: #3282f7;
-            overflow: scroll;
-            li {
-              text-align: left;
-              background-color: #3282f7;
-              border: #3282f7;
-              a {
-                color: white;
-              }
+            border: #3282f7;
+            width: 200px;
+            a {
+              color: white;
             }
           }
+        }
+        &__ingredients {
+          background-color: #3282f7;
 
-          .fa-chevron-up {
-            display: none;
+          &__input {
+            background-color: #3282f7;
           }
         }
         &__appliance {
           background-color: #68d9a4;
-          width: 170px;
-          height: 70px;
-          margin: 10px;
-          border-radius: 5px;
-          color: white;
+
           &__input {
             background-color: #68d9a4;
-            border: none;
-            width: 150px;
-            height: 70px;
-            text-align: start;
-            width: 80%;
-            color: white;
           }
-          &__input:focus + #appliance-chevron-down {
-            display: none;
-          }
-          &__input:focus ~ #appliance-chevron-up {
-            display: inline-block;
-          }
-          ::placeholder {
-            color: white;
-            font-weight: 700;
-          }
+
           .dropdown-menu.show {
             display: flex;
             flex-wrap: wrap;
@@ -117,36 +115,12 @@ body {
               }
             }
           }
-
-          .fa-chevron-up {
-            display: none;
-          }
         }
         &__ustensils {
           background-color: #ed6454;
-          width: 170px;
-          height: 70px;
-          margin: 10px;
-          border-radius: 5px;
-          color: white;
+
           &__input {
             background-color: #ed6454;
-            border: none;
-            width: 150px;
-            height: 70px;
-            text-align: start;
-            width: 80%;
-            color: white;
-          }
-          &__input:focus + #ustensil-chevron-down {
-            display: none;
-          }
-          &__input:focus ~ #ustensil-chevron-up {
-            display: inline-block;
-          }
-          ::placeholder {
-            color: white;
-            font-weight: 700;
           }
           .dropdown-menu.show {
             display: flex;
@@ -162,10 +136,6 @@ body {
                 color: white;
               }
             }
-          }
-
-          .fa-chevron-up {
-            display: none;
           }
         }
       }

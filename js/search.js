@@ -154,34 +154,36 @@ function applianceTagSearch(recipesArray) {
   }
 
   let uniqueApplianceArray = Array.from(new Set(allAppliance)); //enlever les doublons//
-  displayAppliance(uniqueApplianceArray.sort());
+  const arrayOfAppliancesToDisplay = uniqueApplianceArray.sort();
+  const applianceTagInput = document.getElementById("search__sort__appliance__input");
+  applianceTagInput.addEventListener("input", function () {
+    applianceTagInputSearch(arrayOfAppliancesToDisplay);
+  });
+  displayAppliance(arrayOfAppliancesToDisplay, "search__sort__appliance__ul", "search__sort__appliances__ul__li", selectAnApplianceTag);
 }
 
-function displayAppliance(arrayOfAppliancesToDisplay) {
-  const ulAppliance = document.getElementById("search__sort__appliance__ul");
-  const applianceTagInput = document.getElementById("search__sort__appliance__input");
+function displayAppliance(arrayOfAppliancesToDisplay, ulApplianceClass, liApplianceClass, selectTag) {
+  const ulAppliance = document.getElementById(ulApplianceClass);
+
   ulAppliance.innerHTML = "";
   for (let appliance of arrayOfAppliancesToDisplay) {
     const liAppliance = document.createElement("li");
     ulAppliance.appendChild(liAppliance);
     const linkAppliance = document.createElement("a");
-    linkAppliance.classList.add("search__sort__appliances__ul__li", "dropdown-item");
+    linkAppliance.classList.add(liApplianceClass, "dropdown-item");
     linkAppliance.href = "#";
     linkAppliance.id = appliance;
     linkAppliance.innerHTML = appliance;
-    linkAppliance.addEventListener("click", selectAnApplianceTag);
+    linkAppliance.addEventListener("click", selectTag);
     liAppliance.appendChild(linkAppliance);
   }
-  applianceTagInput.addEventListener("input", function () {
-    applianceTagInputSearch(arrayOfAppliancesToDisplay);
-  });
 }
 
 function applianceTagInputSearch(appliancesArray) {
   const applianceTagInput = document.getElementById("search__sort__appliance__input");
   let applianceTagValue = applianceTagInput.value;
   let appliancesTagArray = appliancesArray.filter((ing) => ing.toLowerCase().includes(applianceTagValue));
-  displayAppliance(appliancesTagArray);
+  displayAppliance(appliancesTagArray, "search__sort__appliance__ul", "search__sort__appliances__ul__li", selectAnApplianceTag);
 }
 
 function selectAnApplianceTag(e) {

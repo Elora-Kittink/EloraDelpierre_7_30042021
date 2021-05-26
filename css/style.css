@@ -24,79 +24,74 @@ body main #search__sort {
   display: flex;
   justify-content: flex-start;
 }
-body main #search__sort__ingredients {
-  background-color: #3282f7;
+body main #search__sort .dropdown {
   width: 170px;
   height: 70px;
   margin: 10px;
   border-radius: 5px;
   color: white;
+  position: relative;
+  padding: 0px;
 }
-body main #search__sort__ingredients__input {
-  background-color: #3282f7;
+body main #search__sort .dropdown-toggle {
   border: none;
   width: 150px;
   height: 70px;
   text-align: start;
-  width: 80%;
+  width: 100%;
   color: white;
 }
-body main #search__sort__ingredients__input:focus + #ingredient-chevron-down {
-  display: none;
-}
-body main #search__sort__ingredients__input:focus ~ #ingredient-chevron-up {
-  display: inline-block;
-}
-body main #search__sort__ingredients ::placeholder {
+body main #search__sort ::placeholder {
   color: white;
   font-weight: 700;
 }
-body main #search__sort__ingredients .dropdown-menu.show {
+body main #search__sort .dropdown-toggle:focus + .fa-chevron-down {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 15px;
+}
+body main #search__sort .dropdown-toggle:focus ~ .fa-chevron-up {
+  display: inline-block;
+}
+body main #search__sort .fa-chevron-up {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 15px;
+}
+body main #search__sort .fa-chevron-down {
+  position: absolute;
+  top: 25px;
+  right: 15px;
+}
+body main #search__sort .dropdown-menu.show {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  height: 350px;
-  width: 400px;
+  flex-direction: row;
+  width: 605px;
   background-color: #3282f7;
-  overflow: scroll;
 }
-body main #search__sort__ingredients .dropdown-menu.show li {
+body main #search__sort .dropdown-menu.show li {
   text-align: left;
   background-color: #3282f7;
   border: #3282f7;
+  width: 200px;
 }
-body main #search__sort__ingredients .dropdown-menu.show li a {
+body main #search__sort .dropdown-menu.show li a {
   color: white;
 }
-body main #search__sort__ingredients .fa-chevron-up {
-  display: none;
+body main #search__sort__ingredients {
+  background-color: #3282f7;
+}
+body main #search__sort__ingredients__input {
+  background-color: #3282f7;
 }
 body main #search__sort__appliance {
   background-color: #68d9a4;
-  width: 170px;
-  height: 70px;
-  margin: 10px;
-  border-radius: 5px;
-  color: white;
 }
 body main #search__sort__appliance__input {
   background-color: #68d9a4;
-  border: none;
-  width: 150px;
-  height: 70px;
-  text-align: start;
-  width: 80%;
-  color: white;
-}
-body main #search__sort__appliance__input:focus + #appliance-chevron-down {
-  display: none;
-}
-body main #search__sort__appliance__input:focus ~ #appliance-chevron-up {
-  display: inline-block;
-}
-body main #search__sort__appliance ::placeholder {
-  color: white;
-  font-weight: 700;
 }
 body main #search__sort__appliance .dropdown-menu.show {
   display: flex;
@@ -113,35 +108,11 @@ body main #search__sort__appliance .dropdown-menu.show li {
 body main #search__sort__appliance .dropdown-menu.show li a {
   color: white;
 }
-body main #search__sort__appliance .fa-chevron-up {
-  display: none;
-}
 body main #search__sort__ustensils {
   background-color: #ed6454;
-  width: 170px;
-  height: 70px;
-  margin: 10px;
-  border-radius: 5px;
-  color: white;
 }
 body main #search__sort__ustensils__input {
   background-color: #ed6454;
-  border: none;
-  width: 150px;
-  height: 70px;
-  text-align: start;
-  width: 80%;
-  color: white;
-}
-body main #search__sort__ustensils__input:focus + #ustensil-chevron-down {
-  display: none;
-}
-body main #search__sort__ustensils__input:focus ~ #ustensil-chevron-up {
-  display: inline-block;
-}
-body main #search__sort__ustensils ::placeholder {
-  color: white;
-  font-weight: 700;
 }
 body main #search__sort__ustensils .dropdown-menu.show {
   display: flex;
@@ -157,9 +128,6 @@ body main #search__sort__ustensils .dropdown-menu.show li {
 }
 body main #search__sort__ustensils .dropdown-menu.show li a {
   color: white;
-}
-body main #search__sort__ustensils .fa-chevron-up {
-  display: none;
 }
 body main #result .col {
   height: 390px;
