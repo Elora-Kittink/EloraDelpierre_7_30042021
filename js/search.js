@@ -14,17 +14,15 @@ function search(searchValue) {
       let ingredientsArray = recipe.ingredients.map((ing) => {
         return ing.ingredient;
       });
-      if (descArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
+      if (descArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase())) || nameArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase())) || ingredientsArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
         recipesSorted.push(recipe);
-      } else if (nameArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
-        recipesSorted.push(recipe);
-      } else if (ingredientsArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
-        recipesSorted.push(recipe);
+
+        displayRecipes(recipesSorted);
       }
-      displayRecipes(recipesSorted);
       console.log(recipesSorted);
     }
   }
+
   return recipesSorted;
 }
 
