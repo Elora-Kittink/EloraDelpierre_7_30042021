@@ -180,7 +180,9 @@ body {
               width: 160px;
               overflow: hidden;
               text-overflow: ellipsis;
-              white-space: normal;
+              display: -webkit-box;
+              -webkit-line-clamp: 7;
+              -webkit-box-orient: vertical;
             }
             &__appliance {
               display: none;

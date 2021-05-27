@@ -21,9 +21,10 @@ function search(searchValue) {
       } else if (ingredientsArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
         recipesSorted.push(recipe);
       }
+      displayRecipes(recipesSorted);
+      console.log(recipesSorted);
     }
   }
-
   return recipesSorted;
 }
 
@@ -43,10 +44,10 @@ function searchBar() {
   const resultGallery = document.getElementById("result");
   const searchBarInput = document.getElementById("search__bar__input");
   let searchValue = searchBarInput.value;
-  recipesToDisplay2 = search2(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
-  const ulIngredient = document.getElementById("search__sort__ingredients__ul");
   resultGallery.innerHTML = "";
-  displayRecipes(recipesToDisplay2);
+  recipesToDisplay2 = search(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
+  const ulIngredient = document.getElementById("search__sort__ingredients__ul");
+  // displayRecipes(recipesToDisplay2);
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ingredientTagInput.addEventListener("click", function () {
     ulIngredient.innerHTML = "";
@@ -64,6 +65,7 @@ function searchBar() {
 function ingredientTagSearch(recipesArray) {
   //créé un tableau regroupant tous les ingrédients sans doublons d'un tableau qu'on lui donne
   let allIngredients = [];
+  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   for (let recipe of recipesArray) {
     allIngredients.push(
       recipe.ingredients.map((ing) => {
@@ -74,31 +76,13 @@ function ingredientTagSearch(recipesArray) {
   }
   allIngredients = allIngredients.flat(); // supprimer les profondeurs de tableau //
   let uniqueIngredientsArray = Array.from(new Set(allIngredients)); //enlever les doublons//
-  displayIngredients(uniqueIngredientsArray.sort()); //afficher les ingrédients par ordre alphabetique
-  console.log(uniqueIngredientsArray);
-}
-
-function displayIngredients(arrayOfIngredientsToDisplay) {
-  //affiche les ingrédients présents dans le tableau qu'on lui donne
-  const ulIngredient = document.getElementById("search__sort__ingredients__ul");
-  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
-  ulIngredient.innerHTML = "";
-  for (let ingredient of arrayOfIngredientsToDisplay) {
-    const liIngredient = document.createElement("li");
-    ulIngredient.appendChild(liIngredient);
-    const linkIngredient = document.createElement("a");
-    linkIngredient.classList.add("search__sort__ingredients__ul__li", "dropdown-item");
-    linkIngredient.href = "#";
-    linkIngredient.id = ingredient;
-    linkIngredient.innerHTML = ingredient;
-    linkIngredient.addEventListener("click", selectAnIngredientTag); // écoute si on clique sur un des ingrédients
-    liIngredient.appendChild(linkIngredient);
-  }
+  const arrayOfIngredientsToDisplay = uniqueIngredientsArray.sort();
   ingredientTagInput.addEventListener("input", function () {
     // écoute si on rentre une valeur dans le champs de recherche d'ingrédients
 
     ingredientTagInputSearch(arrayOfIngredientsToDisplay);
   });
+  displayTags(arrayOfIngredientsToDisplay, "search__sort__ingredients__ul", "search__sort__ingredients__ul__li", selectAnIngredientTag); //afficher les ingrédients par ordre alphabetique
 }
 
 function selectAnIngredientTag(e) {
@@ -130,7 +114,7 @@ function ingredientTagInputSearch(ingredientsArray) {
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   let ingredientTagValue = ingredientTagInput.value;
   let ingredientsTagArray = ingredientsArray.filter((ing) => ing.toLowerCase().includes(ingredientTagValue));
-  displayIngredients(ingredientsTagArray);
+  displayTags(ingredientsTagArray, "search__sort__ingredients__ul", "search__sort__ingredients__ul__li", selectAnIngredientTag);
 }
 
 function displayTagIngredientSelected(ingredientId) {
@@ -159,31 +143,14 @@ function applianceTagSearch(recipesArray) {
   applianceTagInput.addEventListener("input", function () {
     applianceTagInputSearch(arrayOfAppliancesToDisplay);
   });
-  displayAppliance(arrayOfAppliancesToDisplay, "search__sort__appliance__ul", "search__sort__appliances__ul__li", selectAnApplianceTag);
-}
-
-function displayAppliance(arrayOfAppliancesToDisplay, ulApplianceClass, liApplianceClass, selectTag) {
-  const ulAppliance = document.getElementById(ulApplianceClass);
-
-  ulAppliance.innerHTML = "";
-  for (let appliance of arrayOfAppliancesToDisplay) {
-    const liAppliance = document.createElement("li");
-    ulAppliance.appendChild(liAppliance);
-    const linkAppliance = document.createElement("a");
-    linkAppliance.classList.add(liApplianceClass, "dropdown-item");
-    linkAppliance.href = "#";
-    linkAppliance.id = appliance;
-    linkAppliance.innerHTML = appliance;
-    linkAppliance.addEventListener("click", selectTag);
-    liAppliance.appendChild(linkAppliance);
-  }
+  displayTags(arrayOfAppliancesToDisplay, "search__sort__appliance__ul", "search__sort__appliances__ul__li", selectAnApplianceTag);
 }
 
 function applianceTagInputSearch(appliancesArray) {
   const applianceTagInput = document.getElementById("search__sort__appliance__input");
   let applianceTagValue = applianceTagInput.value;
   let appliancesTagArray = appliancesArray.filter((ing) => ing.toLowerCase().includes(applianceTagValue));
-  displayAppliance(appliancesTagArray, "search__sort__appliance__ul", "search__sort__appliances__ul__li", selectAnApplianceTag);
+  displayTags(appliancesTagArray, "search__sort__appliance__ul", "search__sort__appliances__ul__li", selectAnApplianceTag);
 }
 
 function selectAnApplianceTag(e) {
@@ -225,37 +192,20 @@ function displayTagApplianceSelected(applianceId) {
 function ustensilsTagSearch(recipesArray) {
   //créé un tableau regroupant tous les ustensiles sans doublons d'un tableau qu'on lui donne
   let allUstensils = [];
+  const ustensilsTagInput = document.getElementById("search__sort__ustensils__input");
   for (let recipe of recipesArray) {
     allUstensils.push(recipe.ustensils);
   }
 
   allUstensils = allUstensils.flat(); // supprimer les profondeurs de tableau //
   let uniqueUstensilsArray = Array.from(new Set(allUstensils)); //enlever les doublons//
-  displayUstensils(uniqueUstensilsArray.sort()); //afficher les ustensiles par ordre alphabetique
-  console.log(uniqueUstensilsArray);
-}
-
-function displayUstensils(arrayOfUstensilsToDisplay) {
-  //affiche les ustensiles présents dans le tableau qu'on lui donne
-  const ulUstensils = document.getElementById("search__sort__ustensils__ul");
-  const ustensilsTagInput = document.getElementById("search__sort__ustensils__input");
-  ulUstensils.innerHTML = "";
-  for (let ustensil of arrayOfUstensilsToDisplay) {
-    const liUstensil = document.createElement("li");
-    ulUstensils.appendChild(liUstensil);
-    const linkUstensil = document.createElement("a");
-    linkUstensil.classList.add("search__sort__ustensils__ul__li", "dropdown-item");
-    linkUstensil.href = "#";
-    linkUstensil.id = ustensil;
-    linkUstensil.innerHTML = ustensil;
-    linkUstensil.addEventListener("click", selectAnUstensilTag); // écoute si on clique sur un des ustensiles
-    liUstensil.appendChild(linkUstensil);
-  }
+  let arrayOfUstensilsToDisplay = uniqueUstensilsArray.sort(); //afficher les ustensiles par ordre alphabetique
   ustensilsTagInput.addEventListener("input", function () {
     // écoute si on rentre une valeur dans le champs de recherche d'ustensiles
 
     ustensilTagInputSearch(arrayOfUstensilsToDisplay);
   });
+  displayTags(arrayOfUstensilsToDisplay, "search__sort__ustensils__ul", "search__sort__ustensils__ul__li", selectAnUstensilTag);
 }
 
 function selectAnUstensilTag(e) {
@@ -287,7 +237,7 @@ function ustensilTagInputSearch(ustensilsArray) {
   const ustensilTagInput = document.getElementById("search__sort__ustensils__input");
   let ustensilTagValue = ustensilTagInput.value;
   let ustensilsTagArray = ustensilsArray.filter((ing) => ing.toLowerCase().includes(ustensilTagValue));
-  displayUstensils(ustensilsTagArray);
+  displayTags(ustensilsTagArray, "search__sort__ustensils__ul", "search__sort__ustensils__ul__li", selectAnUstensilTag);
 }
 
 function displayTagUstensilSelected(ustensilId) {
@@ -302,7 +252,24 @@ function displayTagUstensilSelected(ustensilId) {
   tagCell.innerText = ustensilId;
 }
 
-//-----------------------------------------GALLERY-------------------------------------------------------------------//
+//-----------------------------------------GENERAL-------------------------------------------------------------------//
+
+function displayTags(arrayOfItemsToDisplay, ulTagClass, liTagClass, selectTag) {
+  const ulTag = document.getElementById(ulTagClass);
+
+  ulTag.innerHTML = "";
+  for (let item of arrayOfItemsToDisplay) {
+    const liTag = document.createElement("li");
+    ulTag.appendChild(liTag);
+    const linkTag = document.createElement("a");
+    linkTag.classList.add(liTagClass, "dropdown-item");
+    linkTag.href = "#";
+    linkTag.id = item;
+    linkTag.innerHTML = item;
+    linkTag.addEventListener("click", selectTag);
+    liTag.appendChild(linkTag);
+  }
+}
 
 function displayRecipes(recipesArray) {
   const resultGallery = document.getElementById("result");

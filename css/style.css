@@ -170,7 +170,9 @@ body main #result .col .recipe__info__description {
   width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
 }
 body main #result .col .recipe__info__appliance {
   display: none;
