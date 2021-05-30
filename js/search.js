@@ -16,24 +16,11 @@ function search(searchValue) {
       });
       if (descArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase())) || nameArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase())) || ingredientsArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
         recipesSorted.push(recipe);
-
         displayRecipes(recipesSorted);
       }
-      console.log(recipesSorted);
     }
   }
 
-  return recipesSorted;
-}
-
-function search2(searchValue) {
-  //algo n°2 de recherche sur la barre de recherche
-  let recipesSorted = [];
-  if (searchValue.length >= 3) {
-    recipesSorted = recipes.filter((recipe) => {
-      return recipe.name.toLowerCase().includes(searchValue) || recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) || recipe.description.toLowerCase().includes(searchValue);
-    });
-  }
   return recipesSorted;
 }
 
@@ -45,15 +32,19 @@ function searchBar() {
   resultGallery.innerHTML = "";
   recipesToDisplay2 = search(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
   const ulIngredient = document.getElementById("search__sort__ingredients__ul");
-  // displayRecipes(recipesToDisplay2);
+  displayRecipes(recipesToDisplay2);
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ingredientTagInput.addEventListener("click", function () {
     ulIngredient.innerHTML = "";
 
     if (recipesToDisplay2.length == 0) {
       ingredientTagSearch(recipes);
+      applianceTagSearch(recipes);
+      ustensilsTagSearch(recipes);
     } else {
       ingredientTagSearch(recipesToDisplay2);
+      applianceTagSearch(recipesToDisplay2);
+      ustensilsTagSearch(recipesToDisplay2);
     }
   });
 }
@@ -96,6 +87,8 @@ function selectAnIngredientTag(e) {
     recipesToDisplay2 = recipesFilteredByTag;
     displayRecipes(recipesFilteredByTag);
     ingredientTagSearch(recipesFilteredByTag);
+    applianceTagSearch(recipesFilteredByTag);
+    ustensilsTagSearch(recipesFilteredByTag);
   } else {
     // si il y a déjà eu un tri searchbar re trier parmis les recettes triées par searchbar//
     recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
@@ -103,8 +96,10 @@ function selectAnIngredientTag(e) {
     });
     displayRecipes(recipesToDisplay2);
     ingredientTagSearch(recipesToDisplay2);
+    applianceTagSearch(recipesToDisplay2);
+    ustensilsTagSearch(recipesToDisplay2);
   }
-  displayTagApplianceSelected(IDingredientTagSelected);
+  displayTagIngredientSelected(IDingredientTagSelected);
 }
 
 function ingredientTagInputSearch(ingredientsArray) {
@@ -124,7 +119,7 @@ function displayTagIngredientSelected(ingredientId) {
   let tagClose = document.createElement("button");
   tagClose.classList.add("search__tags__cell__close");
   tagCell.appendChild(tagClose);
-  tagCell.innerText = ingredientId;
+  tagCell.innerHTML = ingredientId + '  <i class="far fa-times-circle"></i>';
 }
 
 //---------------------------------------------APPLIANCE------------------------------------------------------------//
@@ -163,6 +158,8 @@ function selectAnApplianceTag(e) {
     recipesToDisplay2 = recipesFilteredByTag;
     displayRecipes(recipesFilteredByTag);
     applianceTagSearch(recipesFilteredByTag);
+    ustensilsTagSearch(recipesFilteredByTag);
+    ingredientTagSearch(recipesFilteredByTag);
   } else {
     // si il y a déjà eu un tri searchbar re trier parmis les recettes triées par searchbar//
     recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
@@ -170,8 +167,10 @@ function selectAnApplianceTag(e) {
     });
     displayRecipes(recipesToDisplay2);
     ingredientTagSearch(recipesToDisplay2);
+    applianceTagSearch(recipesToDisplay2);
+    ustensilsTagSearch(recipesToDisplay2);
   }
-  displayTagIngredientSelected(IDapplianceTagSelected);
+  displayTagApplianceSelected(IDapplianceTagSelected);
 }
 
 function displayTagApplianceSelected(applianceId) {
@@ -182,7 +181,7 @@ function displayTagApplianceSelected(applianceId) {
   let tagClose = document.createElement("button");
   tagClose.classList.add("search__tags__cell__close");
   tagCell.appendChild(tagClose);
-  tagCell.innerText = applianceId;
+  tagCell.innerHTML = applianceId + '  <i class="far fa-times-circle"></i>';
 }
 
 //-------------------------------------------------USTENSILS------------------------------------------------------------------------------//
@@ -219,6 +218,8 @@ function selectAnUstensilTag(e) {
     recipesToDisplay2 = recipesFilteredByTag;
     displayRecipes(recipesFilteredByTag);
     ustensilsTagSearch(recipesFilteredByTag);
+    ingredientTagSearch(recipesFilteredByTag);
+    applianceTagSearch(recipesFilteredByTag);
   } else {
     // si il y a déjà eu un tri searchbar re trier parmis les recettes triées par searchbar//
     recipesToDisplay2 = recipesToDisplay2.filter((recipe) => {
@@ -226,6 +227,8 @@ function selectAnUstensilTag(e) {
     });
     displayRecipes(recipesToDisplay2);
     ustensilsTagSearch(recipesToDisplay2);
+    ingredientTagSearch(recipesToDisplay2);
+    applianceTagSearch(recipesToDisplay2);
   }
   displayTagUstensilSelected(IDustensilTagSelected);
 }
@@ -247,7 +250,7 @@ function displayTagUstensilSelected(ustensilId) {
   let tagClose = document.createElement("button");
   tagClose.classList.add("search__tags__cell__close");
   tagCell.appendChild(tagClose);
-  tagCell.innerText = ustensilId;
+  tagCell.innerHTML = ustensilId + '  <i class="far fa-times-circle"></i>';
 }
 
 //-----------------------------------------GENERAL-------------------------------------------------------------------//
@@ -325,7 +328,7 @@ function addTitleInRecipe(recipeInfo, recipesName, recipesTime) {
   recipeTitle.appendChild(recipeName);
   const recipeTime = document.createElement("p");
   recipeTime.classList.add("recipe__info__title__time");
-  recipeTime.innerHTML = '<i class="far fa-clock"></i>' + recipesTime + " min";
+  recipeTime.innerHTML = '<i class="far fa-clock"></i> ' + recipesTime + " min";
   recipeTitle.appendChild(recipeTime);
 }
 
@@ -342,10 +345,10 @@ function addIngredientsInrecipe(recipesIngredients, recipeInfo) {
     ingredients.innerHTML = ingredientName;
     ingredientsList.appendChild(ingredients);
     if (ingredient.quantity !== undefined) {
-      ingredients.innerHTML = ingredientName + ": " + ingredientQty;
+      ingredients.innerHTML = "<strong>" + ingredientName + "</strong>" + ": " + ingredientQty;
     }
     if (ingredient.unit !== undefined) {
-      ingredients.innerHTML = ingredientName + ": " + ingredientQty + ingredientUnit;
+      ingredients.innerHTML = "<strong>" + ingredientName + "</strong>" + ": " + ingredientQty + ingredientUnit;
     }
   }
 }

@@ -20,6 +20,34 @@ body main #search__bar #basic-addon1 {
 body main #search__bar #basic-addon1 i {
   font-size: 1.5em;
 }
+body main #search__tags {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: fit-content;
+  max-height: 100px;
+}
+body main #search__tags .search__tags__cell {
+  border-radius: 5px;
+  color: white;
+  width: auto;
+  padding: 3px 12px;
+  margin: 3px;
+  display: flex;
+  justify-content: space-around;
+}
+body main #search__tags .search__tags__cell i {
+  align-self: center;
+}
+body main #search__tags .appliance-tag {
+  background-color: #68d9a4;
+}
+body main #search__tags .ingredient-tag {
+  background-color: #3282f7;
+}
+body main #search__tags .ustensil-tag {
+  background-color: #ed6454;
+}
 body main #search__sort {
   display: flex;
   justify-content: flex-start;
@@ -43,7 +71,7 @@ body main #search__sort .dropdown-toggle {
 }
 body main #search__sort ::placeholder {
   color: white;
-  font-weight: 700;
+  font-weight: 600;
 }
 body main #search__sort .dropdown-toggle:focus + .fa-chevron-down {
   display: none;
@@ -70,63 +98,12 @@ body main #search__sort .dropdown-menu.show {
   flex-wrap: wrap;
   flex-direction: row;
   width: 605px;
-  background-color: #3282f7;
 }
 body main #search__sort .dropdown-menu.show li {
   text-align: left;
-  background-color: #3282f7;
-  border: #3282f7;
   width: 200px;
 }
 body main #search__sort .dropdown-menu.show li a {
-  color: white;
-}
-body main #search__sort__ingredients {
-  background-color: #3282f7;
-}
-body main #search__sort__ingredients__input {
-  background-color: #3282f7;
-}
-body main #search__sort__appliance {
-  background-color: #68d9a4;
-}
-body main #search__sort__appliance__input {
-  background-color: #68d9a4;
-}
-body main #search__sort__appliance .dropdown-menu.show {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  height: 350px;
-  width: auto;
-  background-color: #68d9a4;
-  overflow: scroll;
-}
-body main #search__sort__appliance .dropdown-menu.show li {
-  background-color: #68d9a4;
-}
-body main #search__sort__appliance .dropdown-menu.show li a {
-  color: white;
-}
-body main #search__sort__ustensils {
-  background-color: #ed6454;
-}
-body main #search__sort__ustensils__input {
-  background-color: #ed6454;
-}
-body main #search__sort__ustensils .dropdown-menu.show {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  height: 350px;
-  width: auto;
-  background-color: #ed6454;
-  overflow: scroll;
-}
-body main #search__sort__ustensils .dropdown-menu.show li {
-  background-color: #ed6454;
-}
-body main #search__sort__ustensils .dropdown-menu.show li a {
   color: white;
 }
 body main #result .col {
@@ -157,13 +134,20 @@ body main #result .col .recipe__info__title {
   display: flex;
   justify-content: space-between;
 }
+body main #result .col .recipe__info__title__name {
+  width: 70%;
+  font-weight: 500;
+}
+body main #result .col .recipe__info__title__time {
+  font-weight: 600;
+}
 body main #result .col .recipe__info__ingredients {
   font-size: 0.75em;
   margin-right: 20px;
   width: 170px;
 }
 body main #result .col .recipe__info__ingredients__ingredient {
-  margin-bottom: 2px;
+  margin-bottom: 0px;
 }
 body main #result .col .recipe__info__description {
   font-size: 0.75em;
@@ -179,6 +163,27 @@ body main #result .col .recipe__info__appliance {
 }
 body main #result .col .recipe__info__ustensils {
   display: none;
+}
+
+#search__sort__ingredients,
+#search__sort__ingredients__input,
+#search__sort__ingredients__ul,
+#search__sort__ingredients__ul + .dropdown-item {
+  background-color: #3282f7;
+}
+
+#search__sort__appliance,
+#search__sort__appliance__input,
+#search__sort__appliance__ul,
+#search__sort__appliance__ul + .dropdown-item {
+  background-color: #68d9a4;
+}
+
+#search__sort__ustensils,
+#search__sort__ustensils__input,
+#search__sort__ustensils__ul,
+#search__sort__ustensils__ul + .dropdown-item {
+  background-color: #ed6454;
 }
 
 /*# sourceMappingURL=style.css.map */
