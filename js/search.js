@@ -4,23 +4,14 @@ let recipesToDisplay2 = [];
 
 //---------------------------------------Search-bar----------------------------------------------------------//
 
-function search(searchValue) {
-  // algo de recherche n°1 de la barre de recherche
+function search2(searchValue) {
+  //algo n°2 de recherche sur la barre de recherche
   let recipesSorted = [];
   if (searchValue.length >= 3) {
-    for (let recipe of recipes) {
-      let nameArray = recipe.name.split(" ");
-      let descArray = recipe.description.split(" ");
-      let ingredientsArray = recipe.ingredients.map((ing) => {
-        return ing.ingredient;
-      });
-      if (descArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase())) || nameArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase())) || ingredientsArray.some((el) => el.toLowerCase().match(searchValue.toLowerCase()))) {
-        recipesSorted.push(recipe);
-        displayRecipes(recipesSorted);
-      }
-    }
+    recipesSorted = recipes.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(searchValue) || recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) || recipe.description.toLowerCase().includes(searchValue);
+    });
   }
-
   return recipesSorted;
 }
 
@@ -30,7 +21,7 @@ function searchBar() {
   const searchBarInput = document.getElementById("search__bar__input");
   let searchValue = searchBarInput.value;
   resultGallery.innerHTML = "";
-  recipesToDisplay2 = search(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
+  recipesToDisplay2 = search2(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
   const ulIngredient = document.getElementById("search__sort__ingredients__ul");
   displayRecipes(recipesToDisplay2);
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
