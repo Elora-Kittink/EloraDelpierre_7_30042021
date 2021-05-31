@@ -33,21 +33,15 @@ function searchBar() {
   let searchValue = searchBarInput.value;
   resultGallery.innerHTML = "";
   recipesToDisplay2 = search(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
-  const ulIngredient = document.getElementById("search__sort__ingredients__ul");
-  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
-  ingredientTagInput.addEventListener("click", function () {
-    ulIngredient.innerHTML = "";
-
-    if (recipesToDisplay2.length == 0) {
-      ingredientTagSearch(recipes);
-      applianceTagSearch(recipes);
-      ustensilsTagSearch(recipes);
-    } else {
-      ingredientTagSearch(recipesToDisplay2);
-      applianceTagSearch(recipesToDisplay2);
-      ustensilsTagSearch(recipesToDisplay2);
-    }
-  });
+  if (recipesToDisplay2.length == 0) {
+    ingredientTagSearch(recipes);
+    applianceTagSearch(recipes);
+    ustensilsTagSearch(recipes);
+  } else {
+    ingredientTagSearch(recipesToDisplay2);
+    applianceTagSearch(recipesToDisplay2);
+    ustensilsTagSearch(recipesToDisplay2);
+  }
 }
 
 //----------------------------------------------INGREDIENTS----------------------------------------------------------------//
@@ -262,7 +256,7 @@ function displayTagUstensilSelected(ustensilId) {
   tagCell.classList.add("search__tags__cell", "ustensil-tag");
   tagZone.appendChild(tagCell);
   const tagContent = document.createElement("span");
-  tagContent = ustensilId;
+  tagContent.textContent = ustensilId;
   tagCell.appendChild(tagContent);
   const tagIcon = document.createElement("i");
   tagIcon.classList.add("far", "fa-times-circle");
