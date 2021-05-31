@@ -34,13 +34,14 @@ body {
         .search__tags__cell {
           border-radius: 5px;
           color: white;
-          width: auto;
           padding: 3px 12px;
           margin: 3px;
           display: flex;
           justify-content: space-around;
           i {
             align-self: center;
+            margin-left: 5px;
+            cursor: pointer;
           }
         }
         .appliance-tag {
@@ -154,6 +155,9 @@ body {
               width: 170px;
               &__ingredient {
                 margin-bottom: 0px;
+                strong {
+                  font-weight: 500;
+                }
               }
             }
             &__description {
