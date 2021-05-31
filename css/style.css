@@ -30,7 +30,6 @@ body main #search__tags {
 body main #search__tags .search__tags__cell {
   border-radius: 5px;
   color: white;
-  width: auto;
   padding: 3px 12px;
   margin: 3px;
   display: flex;
@@ -38,6 +37,8 @@ body main #search__tags .search__tags__cell {
 }
 body main #search__tags .search__tags__cell i {
   align-self: center;
+  margin-left: 5px;
+  cursor: pointer;
 }
 body main #search__tags .appliance-tag {
   background-color: #68d9a4;
@@ -148,6 +149,9 @@ body main #result .col .recipe__info__ingredients {
 }
 body main #result .col .recipe__info__ingredients__ingredient {
   margin-bottom: 0px;
+}
+body main #result .col .recipe__info__ingredients__ingredient strong {
+  font-weight: 500;
 }
 body main #result .col .recipe__info__description {
   font-size: 0.75em;

@@ -179,10 +179,15 @@ function displayTagApplianceSelected(applianceId) {
   let tagCell = document.createElement("div");
   tagCell.classList.add("search__tags__cell", "appliance-tag");
   tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerHTML = applianceId + '  <i class="far fa-times-circle"></i>';
+  const tagContent = document.createElement("span");
+  tagContent.textContent = applianceId;
+  tagCell.appendChild(tagContent);
+  const tagIcon = document.createElement("i");
+  tagIcon.classList.add("far", "fa-times-circle");
+  tagCell.appendChild(tagIcon);
+  tagIcon.addEventListener("click", () => {
+    console.log("close");
+  });
 }
 
 //-------------------------------------------------USTENSILS------------------------------------------------------------------------------//
