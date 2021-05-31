@@ -32,7 +32,6 @@ function searchBar() {
   resultGallery.innerHTML = "";
   recipesToDisplay2 = search(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
   const ulIngredient = document.getElementById("search__sort__ingredients__ul");
-  displayRecipes(recipesToDisplay2);
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ingredientTagInput.addEventListener("click", function () {
     ulIngredient.innerHTML = "";
