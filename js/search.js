@@ -5,9 +5,10 @@ let recipesToDisplay2 = [];
 //---------------------------------------Search-bar----------------------------------------------------------//
 
 function search2(searchValue) {
-  //algo n°2 de recherche sur la barre de recherche
+  //algo option 2 de recherche sur la barre de recherche
   let recipesSorted = [];
   if (searchValue.length >= 3) {
+    //la methode filtre chaque recette du tableau et retourne un tableau des recettes incluant la valeure recherchée //
     recipesSorted = recipes.filter((recipe) => {
       return recipe.name.toLowerCase().includes(searchValue) || recipe.ingredients.some((i) => i.ingredient.toLowerCase().includes(searchValue)) || recipe.description.toLowerCase().includes(searchValue);
     });
@@ -21,23 +22,17 @@ function searchBar() {
   const searchBarInput = document.getElementById("search__bar__input");
   let searchValue = searchBarInput.value;
   resultGallery.innerHTML = "";
-  recipesToDisplay2 = search2(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
-  const ulIngredient = document.getElementById("search__sort__ingredients__ul");
-  displayRecipes(recipesToDisplay2);
-  const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
-  ingredientTagInput.addEventListener("click", function () {
-    ulIngredient.innerHTML = "";
-
-    if (recipesToDisplay2.length == 0) {
-      ingredientTagSearch(recipes);
-      applianceTagSearch(recipes);
-      ustensilsTagSearch(recipes);
-    } else {
-      ingredientTagSearch(recipesToDisplay2);
-      applianceTagSearch(recipesToDisplay2);
-      ustensilsTagSearch(recipesToDisplay2);
-    }
-  });
+  recipesToDisplay2 = search2(searchValue);
+  displayRecipes(recipesToDisplay2); //affichage des recettes filtrées par search2//
+  if (recipesToDisplay2.length == 0) {
+    ingredientTagSearch(recipes);
+    applianceTagSearch(recipes);
+    ustensilsTagSearch(recipes);
+  } else {
+    ingredientTagSearch(recipesToDisplay2);
+    applianceTagSearch(recipesToDisplay2);
+    ustensilsTagSearch(recipesToDisplay2);
+  }
 }
 
 //----------------------------------------------INGREDIENTS----------------------------------------------------------------//
