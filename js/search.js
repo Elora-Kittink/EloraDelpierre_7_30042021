@@ -272,35 +272,45 @@ function displayRecipes(recipesArray) {
   });
 
   if (recipesArray.length == 0) {
-    const noResult = document.createElement("p");
-    noResult.id = "result__no";
-    noResult.innerText = "Aucun résultat";
-    resultGallery.appendChild(noResult);
+    displayNoResult();
   } else {
     for (let recipe of recipesArray) {
-      const recipesName = recipe.name;
-      const recipesIngredients = recipe.ingredients;
-      const recipesTime = recipe.time;
-      const recipesDesc = recipe.description;
-      const recipesAppliance = recipe.appliance;
-      const recipesUstensils = recipe.ustensils;
-      const recipeCol = document.createElement("div");
-      recipeCol.classList.add("col");
-      resultGallery.appendChild(recipeCol);
-      const recipeCard = document.createElement("div");
-      recipeCard.classList.add("recipe");
-      recipeCol.appendChild(recipeCard);
-      addImgInRecipe(recipeCard);
-      const recipeInfo = document.createElement("div");
-      recipeInfo.classList.add("recipe__info");
-      recipeCard.appendChild(recipeInfo);
-      addTitleInRecipe(recipeInfo, recipesName, recipesTime);
-      addIngredientsInrecipe(recipesIngredients, recipeInfo);
-      addDescInRecipe(recipeInfo, recipesDesc);
-      addApplianceInRecipe(recipeInfo, recipesAppliance);
-      addUstensilsInRecipe(recipeInfo, recipesUstensils);
+      displayRecipe(recipe);
     }
   }
+}
+
+function displayNoResult() {
+  const resultGallery = document.getElementById("result");
+  const noResult = document.createElement("p");
+  noResult.id = "result__no";
+  noResult.innerText = "Aucun résultat";
+  resultGallery.appendChild(noResult);
+}
+
+function displayRecipe(recipe) {
+  const resultGallery = document.getElementById("result");
+  const recipesName = recipe.name;
+  const recipesIngredients = recipe.ingredients;
+  const recipesTime = recipe.time;
+  const recipesDesc = recipe.description;
+  const recipesAppliance = recipe.appliance;
+  const recipesUstensils = recipe.ustensils;
+  const recipeCol = document.createElement("div");
+  recipeCol.classList.add("col");
+  resultGallery.appendChild(recipeCol);
+  const recipeCard = document.createElement("div");
+  recipeCard.classList.add("recipe");
+  recipeCol.appendChild(recipeCard);
+  addImgInRecipe(recipeCard);
+  const recipeInfo = document.createElement("div");
+  recipeInfo.classList.add("recipe__info");
+  recipeCard.appendChild(recipeInfo);
+  addTitleInRecipe(recipeInfo, recipesName, recipesTime);
+  addIngredientsInrecipe(recipesIngredients, recipeInfo);
+  addDescInRecipe(recipeInfo, recipesDesc);
+  addApplianceInRecipe(recipeInfo, recipesAppliance);
+  addUstensilsInRecipe(recipeInfo, recipesUstensils);
 }
 
 function addImgInRecipe(recipeCard) {
