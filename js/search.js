@@ -80,6 +80,9 @@ function selectAnIngredientTag(e) {
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ingredientTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
   let IDingredientTagSelected = e.target.id.toLowerCase();
+  let linkSelected = e.target;
+  linkSelected.style.display = "none";
+  console.log(linkSelected);
   if (recipesToDisplay2.length == 0) {
     //si il n'y a pas déjà eu de tri par searchbar, trier à partir de recipes//
     let recipesFilteredByTag = recipes.filter((recipe) => {
@@ -117,10 +120,15 @@ function displayTagIngredientSelected(ingredientId) {
   let tagCell = document.createElement("div");
   tagCell.classList.add("search__tags__cell", "ingredient-tag");
   tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerHTML = ingredientId + '  <i class="far fa-times-circle"></i>';
+  const tagContent = document.createElement("span");
+  tagContent.textContent = ingredientId;
+  tagCell.appendChild(tagContent);
+  const tagIcon = document.createElement("i");
+  tagIcon.classList.add("far", "fa-times-circle");
+  tagCell.appendChild(tagIcon);
+  tagIcon.addEventListener("click", () => {
+    console.log("close");
+  });
 }
 
 //---------------------------------------------APPLIANCE------------------------------------------------------------//
@@ -253,10 +261,15 @@ function displayTagUstensilSelected(ustensilId) {
   let tagCell = document.createElement("div");
   tagCell.classList.add("search__tags__cell", "ustensil-tag");
   tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerHTML = ustensilId + '  <i class="far fa-times-circle"></i>';
+  const tagContent = document.createElement("span");
+  tagContent = ustensilId;
+  tagCell.appendChild(tagContent);
+  const tagIcon = document.createElement("i");
+  tagIcon.classList.add("far", "fa-times-circle");
+  tagCell.appendChild(tagIcon);
+  tagIcon.addEventListener("click", () => {
+    console.log("close");
+  });
 }
 
 //-----------------------------------------GENERAL-------------------------------------------------------------------//

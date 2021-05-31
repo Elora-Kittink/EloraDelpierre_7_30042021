@@ -113,7 +113,9 @@ body {
         }
       }
     }
-
+    #dropdown-item-disabled {
+      display: none;
+    }
     #result {
       .col {
         height: 390px;

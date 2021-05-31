@@ -107,6 +107,9 @@ body main #search__sort .dropdown-menu.show li {
 body main #search__sort .dropdown-menu.show li a {
   color: white;
 }
+body main #dropdown-item-disabled {
+  display: none;
+}
 body main #result .col {
   height: 390px;
 }
