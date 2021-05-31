@@ -32,7 +32,7 @@ function searchBar() {
   const searchBarInput = document.getElementById("search__bar__input");
   let searchValue = searchBarInput.value;
   resultGallery.innerHTML = "";
-  recipesToDisplay2 = search(searchValue); //peut-être pas utile de préciser recipestodisplay = puisque passé en globale//
+  recipesToDisplay2 = search(searchValue);
   if (recipesToDisplay2.length == 0) {
     ingredientTagSearch(recipes);
     applianceTagSearch(recipes);
