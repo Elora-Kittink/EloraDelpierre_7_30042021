@@ -103,10 +103,16 @@ function displayTagIngredientSelected(ingredientId) {
   let tagCell = document.createElement("div");
   tagCell.classList.add("search__tags__cell", "ingredient-tag");
   tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerHTML = ingredientId + '  <i class="far fa-times-circle"></i>';
+  const tagContent = document.createElement("span");
+  tagContent.textContent = ingredientId;
+  tagCell.appendChild(tagContent);
+  const tagIcon = document.createElement("i");
+  tagIcon.classList.add("far", "fa-times-circle");
+  tagCell.appendChild(tagIcon);
+  tagIcon.addEventListener("click", () => {
+    console.log("close");
+    tagCell.remove();
+  });
 }
 
 //---------------------------------------------APPLIANCE------------------------------------------------------------//
@@ -165,10 +171,16 @@ function displayTagApplianceSelected(applianceId) {
   let tagCell = document.createElement("div");
   tagCell.classList.add("search__tags__cell", "appliance-tag");
   tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerHTML = applianceId + '  <i class="far fa-times-circle"></i>';
+  const tagContent = document.createElement("span");
+  tagContent.textContent = applianceId;
+  tagCell.appendChild(tagContent);
+  const tagIcon = document.createElement("i");
+  tagIcon.classList.add("far", "fa-times-circle");
+  tagCell.appendChild(tagIcon);
+  tagIcon.addEventListener("click", () => {
+    console.log("close");
+    tagCell.remove();
+  });
 }
 
 //-------------------------------------------------USTENSILS------------------------------------------------------------------------------//
@@ -234,10 +246,16 @@ function displayTagUstensilSelected(ustensilId) {
   let tagCell = document.createElement("div");
   tagCell.classList.add("search__tags__cell", "ustensil-tag");
   tagZone.appendChild(tagCell);
-  let tagClose = document.createElement("button");
-  tagClose.classList.add("search__tags__cell__close");
-  tagCell.appendChild(tagClose);
-  tagCell.innerHTML = ustensilId + '  <i class="far fa-times-circle"></i>';
+  const tagContent = document.createElement("span");
+  tagContent.textContent = ustensilId;
+  tagCell.appendChild(tagContent);
+  const tagIcon = document.createElement("i");
+  tagIcon.classList.add("far", "fa-times-circle");
+  tagCell.appendChild(tagIcon);
+  tagIcon.addEventListener("click", () => {
+    console.log("close");
+    tagCell.remove();
+  });
 }
 
 //-----------------------------------------GENERAL-------------------------------------------------------------------//
