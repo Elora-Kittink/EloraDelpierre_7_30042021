@@ -110,7 +110,6 @@ function displayTagIngredientSelected(ingredientId) {
   tagIcon.classList.add("far", "fa-times-circle");
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
-    console.log("close");
     tagCell.remove();
   });
 }
@@ -178,7 +177,6 @@ function displayTagApplianceSelected(applianceId) {
   tagIcon.classList.add("far", "fa-times-circle");
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
-    console.log("close");
     tagCell.remove();
   });
 }
@@ -253,7 +251,6 @@ function displayTagUstensilSelected(ustensilId) {
   tagIcon.classList.add("far", "fa-times-circle");
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
-    console.log("close");
     tagCell.remove();
   });
 }
