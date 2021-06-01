@@ -25,6 +25,7 @@ function searchBar() {
   recipesToDisplay2 = search2(searchValue);
   displayRecipes(recipesToDisplay2); //affichage des recettes filtrées par search2//
   if (recipesToDisplay2.length == 0) {
+    // mise à jour des tags //
     ingredientTagSearch(recipes);
     applianceTagSearch(recipes);
     ustensilsTagSearch(recipes);
