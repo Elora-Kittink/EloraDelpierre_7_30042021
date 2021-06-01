@@ -74,9 +74,6 @@ function selectAnIngredientTag(e) {
   const ingredientTagInput = document.getElementById("search__sort__ingredients__input");
   ingredientTagInput.value = ""; // quand on selectionne un ingredient le champs de saisie se vide//
   let IDingredientTagSelected = e.target.id.toLowerCase();
-  let linkSelected = e.target;
-  linkSelected.style.display = "none";
-  console.log(linkSelected);
   if (recipesToDisplay2.length == 0) {
     //si il n'y a pas déjà eu de tri par searchbar, trier à partir de recipes//
     let recipesFilteredByTag = recipes.filter((recipe) => {
@@ -121,7 +118,6 @@ function displayTagIngredientSelected(ingredientId) {
   tagIcon.classList.add("far", "fa-times-circle");
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
-    console.log("close");
     tagCell.remove();
   });
 }
@@ -189,7 +185,6 @@ function displayTagApplianceSelected(applianceId) {
   tagIcon.classList.add("far", "fa-times-circle");
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
-    console.log("close");
     tagCell.remove();
   });
 }
@@ -264,7 +259,6 @@ function displayTagUstensilSelected(ustensilId) {
   tagIcon.classList.add("far", "fa-times-circle");
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
-    console.log("close");
     tagCell.remove();
   });
 }
