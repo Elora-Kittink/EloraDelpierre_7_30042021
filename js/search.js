@@ -122,6 +122,7 @@ function displayTagIngredientSelected(ingredientId) {
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
     console.log("close");
+    tagCell.remove();
   });
 }
 
@@ -189,6 +190,7 @@ function displayTagApplianceSelected(applianceId) {
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
     console.log("close");
+    tagCell.remove();
   });
 }
 
@@ -263,6 +265,7 @@ function displayTagUstensilSelected(ustensilId) {
   tagCell.appendChild(tagIcon);
   tagIcon.addEventListener("click", () => {
     console.log("close");
+    tagCell.remove();
   });
 }
 
