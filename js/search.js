@@ -295,7 +295,7 @@ function displayNoResult() {
   const resultGallery = document.getElementById("result");
   const noResult = document.createElement("p");
   noResult.id = "result__no";
-  noResult.innerText = "Aucun résultat";
+  noResult.innerText = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
   resultGallery.appendChild(noResult);
 }
 
