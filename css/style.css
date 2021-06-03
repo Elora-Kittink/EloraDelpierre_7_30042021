@@ -4,7 +4,6 @@ body header {
 }
 body main #search__bar__input {
   height: 70px;
-  width: 1240px;
   margin: 0 auto;
   background-color: #e7e7e7;
   border-radius: 5px;
@@ -34,6 +33,7 @@ body main #search__tags .search__tags__cell {
   margin: 3px;
   display: flex;
   justify-content: space-around;
+  width: max-content;
 }
 body main #search__tags .search__tags__cell i {
   align-self: center;
@@ -107,9 +107,6 @@ body main #search__sort .dropdown-menu.show li {
 body main #search__sort .dropdown-menu.show li a {
   color: white;
 }
-body main #dropdown-item-disabled {
-  display: none;
-}
 body main #result .col {
   height: 390px;
 }
@@ -172,6 +169,14 @@ body main #result .col .recipe__info__ustensils {
   display: none;
 }
 
+#search__sort__ustensils,
+#search__sort__ustensils__input,
+#search__sort__ustensils__ul,
+#search__sort__ustensils__ul + .dropdown-item,
+#search__sort__ustensils__ul + .dropdown-item.active {
+  background-color: #ed6454;
+}
+
 #search__sort__ingredients,
 #search__sort__ingredients__input,
 #search__sort__ingredients__ul,
@@ -182,15 +187,23 @@ body main #result .col .recipe__info__ustensils {
 #search__sort__appliance,
 #search__sort__appliance__input,
 #search__sort__appliance__ul,
-#search__sort__appliance__ul + .dropdown-item {
+#search__sort__appliance__ul + .dropdown-item,
+#search__sort__appliance__ul + .dropdown-item.active {
   background-color: #68d9a4;
 }
 
-#search__sort__ustensils,
-#search__sort__ustensils__input,
-#search__sort__ustensils__ul,
-#search__sort__ustensils__ul + .dropdown-item {
-  background-color: #ed6454;
+@media screen and (max-width: 500px) {
+  body header img {
+    max-width: 250px;
+  }
+  body main #search__bar__input {
+    width: auto;
+    height: 50px;
+  }
+  body main #search__sort {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
